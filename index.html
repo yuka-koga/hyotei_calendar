@@ -11,12 +11,12 @@
   <style>
     body {
       margin: 0;
-      background-image: url('images/top_3.jpg');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
       background-attachment: fixed;
-      color: #ffffff;
+      background-color: #f2f1ee; /* ← ここに好きな色を設定！ */
+      color: #2e2e2e;
       font-family: 'EB Garamond', serif;
     }
 
@@ -98,39 +98,130 @@ body {
   text-decoration: underline;
   font-weight: bold;
 }
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 12px;
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 10px;
+}
+
+.calendar-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1.1em;
+  border: 2px solid #004aad;
+  background-color: white;
+  color: #004aad;
+  transition: all 0.3s ease;
+  box-sizing: border-box; /* ← 念のため入れておくと安心 */
+}
+
+.calendar-button:hover {
+  background-color: #004aad;
+  color: #ffffff;
+}
+
+.calendar-button.locked {
+  pointer-events: none;
+  opacity: 0.3;
+}
+.top-image {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto 30px;
+  text-align: center;
+}
+
+.top-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5列 */
+  gap: 12px;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.calendar-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1.1em;
+  border: 2px solid #004aad;
+  background-color: white;
+  color: #004aad;
+  transition: all 0.3s ease;
+}
+
+/* ホバーで反転 */
+.calendar-button:hover {
+  background-color: #004aad;
+  color: #ffffff;
+}
+
+/* 色パターンごとにクラスを追加 */
+
+.btn-blue {
+  border-color: #004aad;
+  color: #004aad;
+}
+
+.btn-blue:hover {
+  background-color: #004aad;
+  color: #fff;
+}
 
   </style>
 </head>
 <body>
-<div id="date-countdown" class="date-display"></div>
-  <div class="calendar-overlay">
-    <a href="day24.html" class="hotspot" style="top: 200px; left: 473px;" data-day="1"></a>
-    <a href="day23.html" class="hotspot" style="top: 200px; left: 585px;" data-day="2"></a>
-    <a href="day22.html" class="hotspot" style="top: 200px; left: 700px;" data-day="3"></a>
-    <a href="day21.html" class="hotspot" style="top: 200px; left: 815px;" data-day="4"></a>
-    <a href="day20.html" class="hotspot" style="top: 200px; left: 925px;" data-day="5"></a>
-    <a href="day19.html" class="hotspot" style="top: 313px; left: 473px;" data-day="6"></a>
-    <a href="day18.html" class="hotspot" style="top: 313px; left: 585px;" data-day="7"></a>
-    <a href="day17.html" class="hotspot" style="top: 313px; left: 700px;" data-day="8"></a>
-    <a href="day16.html" class="hotspot" style="top: 313px; left: 815px;" data-day="9"></a>
-    <a href="day15.html" class="hotspot" style="top: 313px; left: 925px;" data-day="10"></a>
-    <a href="day14.html" class="hotspot" style="top: 428px; left: 473px;" data-day="11"></a>
-    <a href="day13.html" class="hotspot" style="top: 428px; left: 585px;" data-day="12"></a>
-    <a href="day12.html" class="hotspot" style="top: 428px; left: 700px;" data-day="13"></a>
-    <a href="day11.html" class="hotspot" style="top: 428px; left: 815px;" data-day="14"></a>
-    <a href="day10.html" class="hotspot" style="top: 428px; left: 925px;" data-day="15"></a>
-    <a href="day09.html" class="hotspot" style="top: 540px; left: 473px;" data-day="16"></a>
-    <a href="day08.html" class="hotspot" style="top: 540px; left: 585px;" data-day="17"></a>
-    <a href="day07.html" class="hotspot" style="top: 540px; left: 700px;" data-day="18"></a>
-    <a href="day06.html" class="hotspot" style="top: 540px; left: 815px;" data-day="19"></a>
-    <a href="day05.html" class="hotspot" style="top: 540px; left: 925px;" data-day="20"></a>
-    <a href="day04.html" class="hotspot" style="top: 655px; left: 473px;" data-day="21"></a>
-    <a href="day03.html" class="hotspot" style="top: 655px; left: 585px;" data-day="22"></a>
-    <a href="day02.html" class="hotspot" style="top: 655px; left: 700px;" data-day="23"></a>
-    <a href="day01.html" class="hotspot" style="top: 655px; left: 815px;" data-day="24"></a>
-<a class="hotspot" style="top: 655px; left: 925px;" data-video="today.mp4"></a>
+<div class="top-image">
+  <img src="images/top_3.jpg" alt="カウントダウン" />
+</div>
 
-  </div>
+<div class="calendar-grid">
+  <a href="day24.html" class="calendar-button btn-blue">24</a>
+  <a href="day23.html" class="calendar-button btn-blue">23</a>
+  <a href="day22.html" class="calendar-button btn-blue">22</a>
+  <a href="day21.html" class="calendar-button btn-blue">21</a>
+  <a href="day20.html" class="calendar-button btn-blue">20</a>
+  <a href="day19.html" class="calendar-button btn-blue">19</a>
+  <a href="day18.html" class="calendar-button btn-blue">18</a>
+  <a href="day17.html" class="calendar-button btn-blue">17</a>
+  <a href="day16.html" class="calendar-button btn-blue">16</a>
+  <a href="day15.html" class="calendar-button btn-blue">15</a>
+  <a href="day14.html" class="calendar-button btn-blue">14</a>
+  <a href="day13.html" class="calendar-button btn-blue">13</a>
+  <a href="day12.html" class="calendar-button btn-blue">12</a>
+  <a href="day11.html" class="calendar-button btn-blue">11</a>
+  <a href="day10.html" class="calendar-button btn-blue">10</a>
+  <a href="day09.html" class="calendar-button btn-blue">09</a>
+  <a href="day08.html" class="calendar-button btn-blue">08</a>
+  <a href="day07.html" class="calendar-button btn-blue">07</a>
+  <a href="day06.html" class="calendar-button btn-blue">06</a>
+  <a href="day05.html" class="calendar-button btn-blue">05</a>
+  <a href="day04.html" class="calendar-button btn-blue">04</a>
+  <a href="day03.html" class="calendar-button btn-blue">03</a>
+  <a href="day02.html" class="calendar-button btn-blue">02</a>
+  <a href="day01.html" class="calendar-button btn-blue">01</a>
+<a href="#" class="calendar-button btn-blue" data-video="today.mp4">HYOTEI</a>
+</div>
+
 
 <video id="videoPlayer" controls style="display: none; max-width: 90vw; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 9999; box-shadow: 0 0 20px rgba(0,0,0,0.5); background: #000;"></video>
 
