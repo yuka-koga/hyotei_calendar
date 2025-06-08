@@ -186,6 +186,26 @@ body {
   background-color: #004aad;
   color: #fff;
 }
+.higa-link-wrapper {
+  text-align: center;
+  margin: 40px 0 20px;
+}
+
+.higa-link-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #6200ad;
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 1em;
+  transition: background-color 0.3s ease;
+}
+
+.higa-link-button:hover {
+  background-color: #4b007e;
+}
 
   </style>
 </head>
@@ -195,36 +215,41 @@ body {
 </div>
 
 <div class="calendar-grid">
-  <a href="day24.html" class="calendar-button btn-blue">24</a>
-  <a href="day23.html" class="calendar-button btn-blue">23</a>
-  <a href="day22.html" class="calendar-button btn-blue">22</a>
-  <a href="day21.html" class="calendar-button btn-blue">21</a>
-  <a href="day20.html" class="calendar-button btn-blue">20</a>
-  <a href="day19.html" class="calendar-button btn-blue">19</a>
-  <a href="day18.html" class="calendar-button btn-blue">18</a>
-  <a href="day17.html" class="calendar-button btn-blue">17</a>
-  <a href="day16.html" class="calendar-button btn-blue">16</a>
-  <a href="day15.html" class="calendar-button btn-blue">15</a>
-  <a href="day14.html" class="calendar-button btn-blue">14</a>
-  <a href="day13.html" class="calendar-button btn-blue">13</a>
-  <a href="day12.html" class="calendar-button btn-blue">12</a>
-  <a href="day11.html" class="calendar-button btn-blue">11</a>
-  <a href="day10.html" class="calendar-button btn-blue">10</a>
-  <a href="day09.html" class="calendar-button btn-blue">09</a>
-  <a href="day08.html" class="calendar-button btn-blue">08</a>
-  <a href="day07.html" class="calendar-button btn-blue">07</a>
-  <a href="day06.html" class="calendar-button btn-blue">06</a>
-  <a href="day05.html" class="calendar-button btn-blue">05</a>
-  <a href="day04.html" class="calendar-button btn-blue">04</a>
-  <a href="day03.html" class="calendar-button btn-blue">03</a>
-  <a href="day02.html" class="calendar-button btn-blue">02</a>
-  <a href="day01.html" class="calendar-button btn-blue">01</a>
-<a href="#" class="calendar-button btn-blue" data-video="today.mp4">HYOTEI</a>
+  <a href="day24.html" class="calendar-button btn-blue" data-day="1">24</a>
+  <a href="day23.html" class="calendar-button btn-blue" data-day="2">23</a>
+  <a href="day22.html" class="calendar-button btn-blue" data-day="3">22</a>
+  <a href="day21.html" class="calendar-button btn-blue" data-day="4">21</a>
+  <a href="day20.html" class="calendar-button btn-blue" data-day="5">20</a>
+  <a href="day19.html" class="calendar-button btn-blue" data-day="6">19</a>
+  <a href="day18.html" class="calendar-button btn-blue" data-day="7">18</a>
+  <a href="day17.html" class="calendar-button btn-blue" data-day="8">17</a>
+  <a href="day16.html" class="calendar-button btn-blue" data-day="9">16</a>
+  <a href="day15.html" class="calendar-button btn-blue" data-day="10">15</a>
+  <a href="day14.html" class="calendar-button btn-blue" data-day="11">14</a>
+  <a href="day13.html" class="calendar-button btn-blue" data-day="12">13</a>
+  <a href="day12.html" class="calendar-button btn-blue" data-day="13">12</a>
+  <a href="day11.html" class="calendar-button btn-blue" data-day="14">11</a>
+  <a href="day10.html" class="calendar-button btn-blue" data-day="15">10</a>
+  <a href="day09.html" class="calendar-button btn-blue" data-day="16">09</a>
+  <a href="day08.html" class="calendar-button btn-blue" data-day="17">08</a>
+  <a href="day07.html" class="calendar-button btn-blue" data-day="18">07</a>
+  <a href="day06.html" class="calendar-button btn-blue" data-day="19">06</a>
+  <a href="day05.html" class="calendar-button btn-blue" data-day="20">05</a>
+  <a href="day04.html" class="calendar-button btn-blue" data-day="21">04</a>
+  <a href="day03.html" class="calendar-button btn-blue" data-day="22">03</a>
+  <a href="day02.html" class="calendar-button btn-blue" data-day="23">02</a>
+  <a href="day01.html" class="calendar-button btn-blue" data-day="24">01</a>
+<a href="#" class="calendar-button btn-blue" data-video="today.mp4" data-day="25">HYOTEI</a>
 </div>
 
 
 <video id="videoPlayer" controls style="display: none; max-width: 90vw; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 9999; box-shadow: 0 0 20px rgba(0,0,0,0.5); background: #000;"></video>
 
+<div class="higa-link-wrapper">
+  <a href="https://yuka-koga.github.io/higa_calendar/" class="higa-link-button" target="_blank" rel="noopener noreferrer">
+    ▶ HIGA
+  </a>
+</div>
 </body>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
