@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>day20 - Prince of Pixel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet" />
+  <style>
+@font-face {
+  font-family: 'DonguriDuel';
+  src: url('x10y12pxDonguriDuel.ttf') format('truetype');
+}
+
+    body {
+      background-color: #f2f1ee;
+  font-family: 'DonguriDuel', sans-serif;
+      text-align: center;
+      padding: 30px 20px;
+    }
+
+    h2 {
+      color: #119fd4;
+      margin-bottom: 20px;
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+  margin-top: 70px;
+
+    }
+
+    .card {
+      width: 100px;
+      background-color: #ffffff;
+      border: 2px solid #119fd4;
+      border-radius: 8px;
+      padding: 10px;
+      box-shadow: 1px 1px 5px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
+    }
+
+    .card img {
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover img {
+      transform: scale(1.03);
+    }
+
+    .char-name {
+      margin-top: 6px;
+      font-size: 0.8em;
+      color: #2e2e2e;
+font-family: 'DonguriDuel';
+    }
+
+    .card.jump {
+      animation: jump 0.5s ease;
+    }
+
+    @keyframes jump {
+      0% { transform: translateY(0); }
+      30% { transform: translateY(-20px); }
+      60% { transform: translateY(0); }
+      100% { transform: translateY(0); }
+    }
+
+    @media screen and (max-width: 480px) {
+      .card {
+        width: 80px;
+        padding: 8px;
+      }
+
+      .char-name {
+        font-size: 0.7em;
+      }
+    }
+.top-button {
+  display: block;
+  width: fit-content;
+  margin: 30px auto 0;
+  padding: 10px 20px;
+  border: 2px solid #119fd4;
+  background-color: transparent;
+  color: #119fd4;
+  font-weight: bold;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.top-button:hover {
+  background-color: #119fd4;
+  color: #ffffff;
+}
+.card {
+  position: relative;
+  cursor: pointer;
+}
+
+.speech {
+  position: absolute;
+  bottom: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ffffff;
+  border: 2px solid #119fd4;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 0.75em;
+  color: #2e2e2e;
+  white-space: normal; /* ← これで改行が反映される！ */
+  word-break: break-word; /* 長い語も折り返す */
+  width: 220px; /* ← 必要に応じて広げてOK */
+  display: none;
+  z-index: 1;
+  font-family: 'DonguriDuel', sans-serif;
+  line-height: 1.5;
+}
+
+.card.show-speech .speech {
+  display: block;
+}
+
+  </style>
+</head>
+<body>
+  <h2>ピクセルのおうじさま</h2>
+<p>ひょうていがくえん の みんな の フルネーム を おぼえよう</p>
+  <div class="row">
+<div class="card" data-char="atobe">
+      <img src="images/hyotei/atobe.png" alt="跡部景吾" />
+      <div class="char-name">あとべ けいご</div>
+  <div class="speech">……</div>
+    </div>
+<div class="card" data-char="kabaji">
+      <img src="images/hyotei/kabaji.png" alt="樺地崇弘" />
+      <div class="char-name">かばじ むねひろ</div>
+  <div class="speech">……</div>
+    </div>
+<div class="card" data-char="yushi">
+      <img src="images/hyotei/yushi.png" alt="忍足侑士" />
+      <div class="char-name">おしたり ゆうし</div>
+  <div class="speech">……</div>
+    </div>
+<div class="card" data-char="mukahi">
+      <img src="images/hyotei/mukahi.png" alt="向日岳人" />
+      <div class="char-name">むかひ がくと</div>
+  <div class="speech">……</div>
+    </div>
+<div class="card" data-char="taki">
+      <img src="images/hyotei/taki_2.png" alt="滝萩之介" />
+      <div class="char-name">たき はぎのすけ</div>
+    </div>
+<div class="card" data-char="akutagawa">
+      <img src="images/hyotei/akutagawa.png" alt="芥川慈郎" />
+      <div class="char-name">あくたがわ じろう</div>
+  <div class="speech">……</div>
+    </div>
+<div class="card" data-char="shishido">
+      <img src="images/hyotei/shishido.png" alt="宍戸亮" />
+      <div class="char-name">ししど りょう</div>
+  <div class="speech">……</div>
+    </div>
+<div class="card" data-char="ootori">
+      <img src="images/hyotei/ootori.png" alt="鳳長太郎" />
+      <div class="char-name">おおとり ちょうたろう</div>
+  <div class="speech">……</div>
+    </div>
+<div class="card" data-char="hiyoshi">
+      <img src="images/hyotei/hiyoshi_2.png" alt="日吉若" />
+      <div class="char-name">ひよし わかし</div>
+  <div class="speech">……</div>
+    </div>
+  </div>
+
+<a class="top-button" href="index.html">TOP</a>
+
+  <script>
+    const cards = document.querySelectorAll('.card');
+
+    function jumpRandomCard() {
+      const randomIndex = Math.floor(Math.random() * cards.length);
+      const card = cards[randomIndex];
+      card.classList.add('jump');
+      setTimeout(() => card.classList.remove('jump'), 500);
+    }
+
+    setInterval(jumpRandomCard, 2000);
+
+const speeches = {
+  atobe: [
+    "おれさま の びぎ に よいな ！",
+    "フン、とうぜんだな。",
+    "てづかァ！"
+  ],
+  kabaji: [
+    "うす",
+    "はい",
+    "まだ うてます"
+  ],
+  yushi: [
+    "かつんは ひょうてい",
+    "ざんねんやったなぁ",
+    "MEBACHIKO"
+  ],
+  mukahi: [
+    "もっと とんでみそ",
+    "おれ が まとめて めんどう みてやる",
+    "くそっくそっ ゆうしめ ！"
+  ],
+  taki: [
+    "やるね〜",
+    "やるね…",
+    "やるねー"
+  ],
+  akutagawa: [
+    "うれC〜！",
+    "たのC〜！",
+    "みんな おはよっ ☀️"
+  ],
+  shishido: [
+    "げきダサ だぜ ！",
+    "ちょうたろう ！",
+    "ちょいダサ だぜ ！"
+  ],
+  ootori: [
+    "ししどさん ！",
+    "ししどさん !?",
+    "ししどさん…"
+  ],
+  hiyoshi: [
+    "げこくじょう だ ！",
+    "ひよし わかし 2ねん アグレッシブベースライナー　せいかく は れいせいちんちゃく で たにん に ながされない すこし しんけいしつ な めん も あるが つね に まえむき で こしたんたん と せいレギュラー を ねらっていたようだ たんじょうび は 12がついつか、けつえきがた は ABがた すき な ことば は ……",
+    "SOLO BANG！"
+  ]
+
+  // 他キャラも必要に応じて追加
+};
+
+document.querySelectorAll('.card').forEach(card => {
+  const charKey = card.dataset.char;
+  const speechEl = card.querySelector('.speech');
+
+  card.addEventListener('click', () => {
+    if (speeches[charKey]) {
+      const lines = speeches[charKey];
+      const randomLine = lines[Math.floor(Math.random() * lines.length)];
+      speechEl.innerHTML = randomLine;
+      card.classList.add('show-speech');
+
+      // 3秒後にふきだしを自動で隠す（お好み）
+      setTimeout(() => {
+        card.classList.remove('show-speech');
+      }, 2000);
+    }
+  });
+});
+
+  </script>
+</body>
+</html>

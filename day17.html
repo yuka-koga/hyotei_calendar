@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 17 - BEAUTY Recommend</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f2f1ee;
+      font-family: 'Oswald', sans-serif;
+      color: #2e2e2e;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    .question-box {
+      display: none;
+      max-width: 600px;
+      margin: 0 auto 40px;
+      padding: 20px;
+      border: 2px solid #119fd4;
+      border-radius: 10px;
+      background: #ffffff;
+    }
+
+    .question-box.active {
+      display: block;
+    }
+
+    h2 {
+      color: black;
+      margin-bottom: 20px;
+    }
+
+    .option {
+      display: block;
+      margin: 15px auto;
+      padding: 10px 20px;
+      background: #119fd4;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+
+    .result {
+      display: none;
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 20px;
+      border: 2px solid #119fd4;
+      border-radius: 10px;
+      background: #ffffff;
+    }
+#start-screen {
+  text-align: center;
+      max-width: 600px;
+      margin: 40px auto;
+  padding: 60px 20px;
+      border: 2px solid #119fd4;
+      border-radius: 10px;
+  background-color: #ffffff;
+}
+
+#start-screen h1 {
+  color: #119fd4;
+  font-family: 'Oswald', sans-serif;
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+#start-button {
+  background-color: #119fd4;
+  color: #fff;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1em;
+  font-family: 'Oswald', sans-serif;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#start-button:hover {
+  background-color: #0c7fb3;
+}
+.top-button {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 10px 20px;
+  background-color: #119fd4;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1em;
+  cursor: pointer;
+  font-family: 'Oswald', sans-serif;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.top-button:hover {
+  background-color: #0c7fb3;
+}
+.index-button {
+  display: block;
+  width: fit-content;
+  margin: 60px auto 0;
+  padding: 10px 20px;
+  background-color: transparent;
+  color: #119fd4;
+  border: 2px solid #119fd4;
+  border-radius: 8px;
+  font-family: 'Oswald', sans-serif;
+  text-decoration: none;
+  font-size: 0.95em;
+  transition: background-color 0.3s ease;
+}
+
+.index-button:hover {
+  background-color: #119fd4;
+  color: #ffffff;
+}
+
+  </style>
+</head>
+<body>
+<div id="start-screen" class="box-style">
+  <h1>BEAUTY Recommend</h1>
+  <p>さて青春に汗を流すPrinceたちは全員等しく美しいものですが、<br>その中でも特に「美」方向にステ振りされているBEAUTY枠✨の方々がいます。<br><br>そこで今回の公演にいる4名のBEAUTYから、<br>あなたにぴったりなPrinceを紹介します。</p>
+  <button id="start-button">Start</button>
+</div>
+
+<div id="quiz-container" style="display:none;">
+  <div id="q1" class="question-box active">
+    <h2>Q1.人の痛みが？</h2>
+    <button class="option" onclick="answerQ1('A')">分かる。いつか報われるときが来る</button>
+    <button class="option" onclick="answerQ1('B')">分からない。嫌ならやめれば？</button>
+  </div>
+
+  <div id="q2" class="question-box">
+    <h2>Q2.今日は天気がいい！</h2>
+    <button class="option" onclick="answerQ2('A')">実はうれしい！</button>
+    <button class="option" onclick="answerQ2('B')">関係ない</button>
+  </div>
+
+  <div id="q3" class="question-box">
+    <h2>Q3.メガネは？</h2>
+    <button class="option" onclick="answerQ3('A')">いる</button>
+    <button class="option" onclick="answerQ3('B')">いらない</button>
+  </div>
+
+  <div id="q4" class="question-box">
+    <h2>Q3.髪質は？</h2>
+    <button class="option" onclick="answerQ4('A')">さらさらストレート</button>
+    <button class="option" onclick="answerQ4('B')">くるくるウェーブ</button>
+  </div>
+
+  <div id="type1" class="result"><h2>✨Eishiro Kite✨</h2><p>崇高な美学と他を圧倒する眼光の鋭さには平伏せざるを得ない。しかし彼とはいえど沖縄のわちゃわちゃ感から逃れることはできないのだ！うちなー部員のブリーダーとしてその手腕を発揮する（させられる）姿を見守ろう。</p>
+  <button class="top-button" onclick="goToTop()">もう一度診断する</button>
+</div>
+  <div id="type2" class="result"><h2>✨Haginosuke Taki✨</h2><p>正レギュラーの座を行ったり来たりするこの方。線の細さとは裏腹に人情に熱い一面も。今回は応援役としてベンチ入りしてくれているはず。さすが氷帝、トリオポジションすらも美しい！</p>
+  <button class="top-button" onclick="goToTop()">もう一度診断する</button>
+</div>
+  <div id="type3" class="result"><h2>✨Shusuke Fuji✨</h2><p>暗黒微笑の王子様とは彼のこと。サボテンに話しかけたりといったお茶目な一面を端正な挙措一点でカバーしている。美しさではカバーしきれないトンチキを発見していきたいところ。技名の愉しさにも刮目せよ。</p>
+  <button class="top-button" onclick="goToTop()">もう一度診断する</button>
+</div>
+  <div id="type4" class="result"><h2>✨Seiichi Yukimura✨</h2><p>美しさと恐怖は表裏一体。優しげな顔と鍛え上げられた強い肉体のアンバランスさが絶妙なバランスを保っている。病床から完全復帰した彼は今回一体どんな光景を見せてくれるのか、はたまた見せてくれないのか（五感奪取）。</p>
+  <button class="top-button" onclick="goToTop()">もう一度診断する</button>
+</div>
+</div>
+
+  <script>
+    let answer1 = '';
+    let answer2 = '';
+
+    function showQuestion(id) {
+      document.querySelectorAll('.question-box').forEach(q => q.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+
+    function showResult(id) {
+      document.querySelectorAll('.question-box').forEach(q => q.classList.remove('active'));
+      document.getElementById(id).style.display = 'block';
+    }
+
+    function answerQ1(choice) {
+      answer1 = choice;
+      showQuestion('q2');
+    }
+
+    function answerQ2(choice) {
+      answer2 = choice;
+      if (answer1 === 'A') {
+        showQuestion('q3');
+      } else {
+        showQuestion('q4');
+      }
+    }
+
+    function answerQ3(choice) {
+      if (choice === 'A') {
+        showResult('type1');
+      } else {
+        showResult('type2');
+      }
+    }
+
+    function answerQ4(choice) {
+      if (choice === 'A') {
+        showResult('type3');
+      } else {
+        showResult('type4');
+      }
+    }
+document.getElementById('start-button').addEventListener('click', () => {
+  document.getElementById('start-screen').style.display = 'none';
+  document.getElementById('quiz-container').style.display = 'block';
+});
+function goToTop() {
+  // 結果をすべて非表示にする
+  document.querySelectorAll('.result').forEach(r => r.style.display = 'none');
+  // 最初の質問を再表示
+  document.getElementById('q1').classList.add('active');
+  // 変数を初期化（必要なら）
+  answer1 = '';
+  answer2 = '';
+}
+
+  </script>
+<a href="index.html" class="index-button">TOP</a>
+</body>
+</html>

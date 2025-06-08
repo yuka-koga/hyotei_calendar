@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 07 - キービジュアル見るだけ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f2f1ee;
+      font-family: 'Oswald', sans-serif;
+      text-align: center;
+      color: #2e2e2e;
+      padding: 30px 20px;
+    }
+
+    .video-box {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #ffffff;
+      border: 2px solid #004aad;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      height: 0;
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: none;
+      border-radius: 8px;
+    }
+
+    .index-button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      border: 2px solid #004aad;
+      background: transparent;
+      color: #004aad;
+      border-radius: 8px;
+      font-size: 0.95em;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .index-button:hover {
+      background-color: #004aad;
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>青学応援対決 おさらい 📣</h2>
+
+<div class="video-box">
+  <p>ひと通り本編が終わった後に、必ず各校の応援対決があります。<br>
+動画を見ておさらいしておきましょう。<br>
+動画の9:29からです。</p>
+
+  <div class="video-wrapper">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/z5BYt20JqPY?si=qmGsKT52jRvkxeju" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+
+  <!-- ここが動画の下に表示されるテキスト部分 -->
+  <p style="margin-top: 20px;">
+    こちらでよく確認しておいてほしいのは一点だけ。<br>
+    手塚です。<br>
+手塚の走り込みです。<br><br>
+この動画の会場は特殊でステージがとても狭い&明るいため、余裕で定位置に到着していますが、<br>
+普段は自分のコールが始まる前にスポットライトに入り込むために全力ダッシュしています。<br><br>
+前回公演では、特に初日付近でギリギリの走りを見せていました。<br>
+今回観るのは完全なる初日公演ですが、果たして手塚は間に合うのでしょうか？<br><br>
+不二周助あたりのコーレスから待機しておいてください。
+  </p>
+</div>
+
+  <a href="index.html" class="index-button">TOP</a>
+
+</body>
+</html>

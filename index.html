@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+<script src="script.js" defer></script>
+  <title>全国氷帝カウントダウン</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+  <style>
+    body {
+      margin: 0;
+      background-image: url('images/top_3.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      color: #ffffff;
+      font-family: 'EB Garamond', serif;
+    }
+
+.calendar-overlay {
+  position: relative;
+  width: 100%;
+  max-width: 1920px;
+  height: calc(100vw * 9 / 16); /* 安定した高さを確保 */
+  transform-origin: top left;
+  transform: scale(var(--scale));
+}
+
+.hotspot {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: transparent;
+  text-decoration: none;
+  transition: background 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  z-index: 10; /* ← 追加！ */
+}
+
+.hotspot:hover {
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+}
+.hotspot.locked {
+  opacity: 0.3;
+  cursor: default;
+}
+:root {
+  --scale: 1;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --scale: 0.5;
+  }
+}
+@media (max-width: 480px) {
+  :root {
+    --scale: 0.4;
+  }
+}
+body {
+  overflow-x: hidden;
+}
+.date-display {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  background: rgba(255, 255, 255, 0.7);
+  color: #002244;
+  font-size: 0.9em;
+  padding: 6px 12px;
+  border-radius: 6px;
+  z-index: 999;
+  font-family: 'Oswald', monospace;
+  max-width: 90vw;
+}
+
+.daily-message {
+  position: fixed;
+  top: 72px; /* 日付とカウントダウンの下に配置 */
+  right: 12px;
+  background: rgba(255, 255, 255, 0.7);
+  color: #004aad;
+  font-size: 0.85em;
+  padding: 6px 12px;
+  border-radius: 6px;
+  z-index: 999;
+  font-family: 'Oswald', monospace;
+}
+
+.daily-message a {
+  color: #004aad;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+  </style>
+</head>
+<body>
+<div id="date-countdown" class="date-display"></div>
+  <div class="calendar-overlay">
+    <a href="day24.html" class="hotspot" style="top: 200px; left: 473px;" data-day="1"></a>
+    <a href="day23.html" class="hotspot" style="top: 200px; left: 585px;" data-day="2"></a>
+    <a href="day22.html" class="hotspot" style="top: 200px; left: 700px;" data-day="3"></a>
+    <a href="day21.html" class="hotspot" style="top: 200px; left: 815px;" data-day="4"></a>
+    <a href="day20.html" class="hotspot" style="top: 200px; left: 925px;" data-day="5"></a>
+    <a href="day19.html" class="hotspot" style="top: 313px; left: 473px;" data-day="6"></a>
+    <a href="day18.html" class="hotspot" style="top: 313px; left: 585px;" data-day="7"></a>
+    <a href="day17.html" class="hotspot" style="top: 313px; left: 700px;" data-day="8"></a>
+    <a href="day16.html" class="hotspot" style="top: 313px; left: 815px;" data-day="9"></a>
+    <a href="day15.html" class="hotspot" style="top: 313px; left: 925px;" data-day="10"></a>
+    <a href="day14.html" class="hotspot" style="top: 428px; left: 473px;" data-day="11"></a>
+    <a href="day13.html" class="hotspot" style="top: 428px; left: 585px;" data-day="12"></a>
+    <a href="day12.html" class="hotspot" style="top: 428px; left: 700px;" data-day="13"></a>
+    <a href="day11.html" class="hotspot" style="top: 428px; left: 815px;" data-day="14"></a>
+    <a href="day10.html" class="hotspot" style="top: 428px; left: 925px;" data-day="15"></a>
+    <a href="day09.html" class="hotspot" style="top: 540px; left: 473px;" data-day="16"></a>
+    <a href="day08.html" class="hotspot" style="top: 540px; left: 585px;" data-day="17"></a>
+    <a href="day07.html" class="hotspot" style="top: 540px; left: 700px;" data-day="18"></a>
+    <a href="day06.html" class="hotspot" style="top: 540px; left: 815px;" data-day="19"></a>
+    <a href="day05.html" class="hotspot" style="top: 540px; left: 925px;" data-day="20"></a>
+    <a href="day04.html" class="hotspot" style="top: 655px; left: 473px;" data-day="21"></a>
+    <a href="day03.html" class="hotspot" style="top: 655px; left: 585px;" data-day="22"></a>
+    <a href="day02.html" class="hotspot" style="top: 655px; left: 700px;" data-day="23"></a>
+    <a href="day01.html" class="hotspot" style="top: 655px; left: 815px;" data-day="24"></a>
+<a class="hotspot" style="top: 655px; left: 925px;" data-video="today.mp4"></a>
+
+  </div>
+
+<video id="videoPlayer" controls style="display: none; max-width: 90vw; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 9999; box-shadow: 0 0 20px rgba(0,0,0,0.5); background: #000;"></video>
+
+</body>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const display = document.getElementById('date-text');
+
+  const today = new Date();
+  const endDate = new Date('2025-07-06');
+
+  const yyyy = today.getFullYear();
+  const mm = String(today.getMonth() + 1).padStart(2, '0');
+  const dd = String(today.getDate()).padStart(2, '0');
+  const weekdays = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+  const weekday = weekdays[today.getDay()];
+
+  const formatted = `${yyyy}/${mm}/${dd} (${weekday})`;
+  const remaining = Math.max(0, Math.ceil((endDate - today) / (1000 * 60 * 60 * 24)));
+
+  display.textContent = `${formatted}　🍧 あと${remaining}日`;
+});
+
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const hotspots = document.querySelectorAll('.hotspot');
+  const videoPlayer = document.getElementById('videoPlayer');
+
+  hotspots.forEach(hotspot => {
+    hotspot.addEventListener('click', (e) => {
+      const videoSrc = hotspot.dataset.video;
+      if (videoSrc) {
+        e.preventDefault(); // リンクのデフォルト動作を防止
+        videoPlayer.src = videoSrc;
+        videoPlayer.style.display = 'block';
+        videoPlayer.play();
+      }
+    });
+  });
+
+  videoPlayer.addEventListener('ended', () => {
+    videoPlayer.pause();
+    videoPlayer.style.display = 'none';
+    videoPlayer.src = '';
+  });
+});
+</script>
+<body>
+  <!-- カウントダウン表示（右上） -->
+  <div id="date-countdown" class="date-display"></div>
+
+  <!-- 日付とお知らせ（別要素） -->
+  <div id="date-text" class="date-display"></div>
+
+</html>

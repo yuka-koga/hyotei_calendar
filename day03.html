@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Day 03 - 空からホールを見てみよう</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+  <style>
+@font-face {
+  font-family: 'DonguriDuel';
+  src: url('x10y12pxDonguriDuel.ttf') format('truetype');
+}
+    body {
+      background-color: #f2f1ee;
+      color: #2e2e2e;
+      font-family: 'Oswald', sans-serif;
+      margin: 0;
+      padding: 30px 20px;
+      line-height: 1.8;
+    }
+
+    h1 {
+      color: #004aad;
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 1.8em;
+    }
+
+    .article-section {
+      max-width: 800px;
+      margin: 0 auto 60px;
+      background-color: #ffffff;
+      padding: 20px;
+      border-left: 6px solid #004aad;
+      box-shadow: 2px 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .article-section img {
+      width: 80%;
+      height: auto;
+      border-radius: 6px;
+      margin-bottom: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+
+    }
+
+    .article-section p {
+      margin: 0;
+    }
+
+/* 会話ボックス */
+.dialogue-box {
+  display: flex;
+  align-items: center; /* ←ここを変更（flex-end → center） */
+  gap: 15px;
+  background-color: #ffffff;
+  border: 2px solid #ce0201;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 40px auto;
+  max-width: 700px;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+}
+
+.dialogue-box img {
+  width: 80px;
+  height: auto;
+  border-radius: 6px;
+}
+
+/* テキスト */
+.dialogue-text {
+  text-align: left;
+  font-size: 0.95em;
+  line-height: 1.5;
+  margin: auto 0; /* ←縦の余白を調整して中央揃えに */
+  font-family: 'DonguriDuel', sans-serif; /* ←追加 */
+}
+
+    @media screen and (max-width: 600px) {
+      .dialogue-box {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .dialogue-text {
+        text-align: center;
+      }
+    }
+.section-button {
+  display: inline-block;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding: 10px 20px;
+  background-color: #004aad;
+  color: #ffffff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.section-button:hover {
+  background-color: #002f72;
+}
+.highlight {
+  color: #ce0201;
+  font-weight: bold;
+  background-color: #ffcccc;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+.top-button {
+  display: block;
+  width: fit-content;
+  margin: 30px auto 0;
+  padding: 10px 20px;
+  border: 2px solid #004aad;
+  background-color: transparent;
+  color: #004aad;
+  font-weight: bold;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.top-button:hover {
+  background-color: #002f6c;
+  color: #ffffff;
+}
+  </style>
+</head>
+<body>
+
+  <h1>空からホールを見てみよう</h1>
+
+  <div class="article-section">
+    <p>雲に乗った感覚で会場を見て回る新感覚バラエティー「空からホールを見てみよう」。<br><br>
+今日は「ミュージカル テニスの王子様 4th season 青学 vs 氷帝 全国大会編」の<br>
+会場になっている、Kanadevia Hall（カナデビアホール）を見てみましょう。<br><br>
+ナビゲーターはいつも六角中を浜から見守るオジイです。</p>
+</p>
+  </div>
+
+  <!-- 会話ボックス -->
+  <div class="dialogue-box">
+    <img src="images/hall/ojii.png" alt="オジイ">
+    <div class="dialogue-text">
+      オジイ じゃ〜
+    </div>
+  </div>
+
+  <div class="article-section">
+<img src="images/hall/kanadeviahall.jpeg" alt="カナデビアホール正面"><br>
+<p>ここがカナデビアホールの入り口です。<br>
+カラフルな入り口で楽しげな気分を盛り上げてくれますね。<br>
+</p>
+</div>
+
+  <div class="dialogue-box">
+    <img src="images/hall/ojii.png" alt="オジイ">
+    <div class="dialogue-text">
+      ことしの 4がつに とうきょうドームシティホールから なまえがかわったんじゃ〜
+    </div>
+  </div>
+
+  <div class="article-section">
+<p>オジイはなんでも知っていますね。<br>
+それではさっそく中に入ってみましょう。<br>
+<img src="images/hall/1.png" alt="1"><br>
+広い入り口をくぐると、現代的なデザインの内装が広がります。<br>
+<img src="images/hall/2.png" alt="2"><br>
+微生物のような図柄を横目に見ながら、中へ。<br>
+当日はこの辺りでチケットを確認することになりそうですね。<br>
+事前に手元に用意しておくとスムーズです。<br>
+<img src="images/hall/3.png" alt="3"><br>
+中にはさっそく案内板が。<br>
+さて、どの階から見ていこうかな。<br><br>
+おや…？
+</p>
+</div>
+
+  <div class="dialogue-box">
+    <img src="images/hall/ojii.png" alt="オジイ">
+    <div class="dialogue-text">
+      いたぞ　あそこじゃ〜
+    </div>
+  </div>
+
+  <div class="article-section">
+<p><span class="highlight">公演アニマルズ🐻</span><br>
+空から見えた動物を見つけて捕獲し、コレクションするミニ企画、<br>
+「公演アニマルズ」。<br><br>
+今日はどんな動物を見つけたのでしょう？<br>
+<img src="images/hall/4.png" alt="4"><br>
+</p>
+  </div>
+
+  <div class="dialogue-box">
+    <img src="images/hall/ojii.png" alt="オジイ">
+    <div class="dialogue-text">
+      そりゃ　いけ〜〜〜
+    </div>
+  </div>
+
+  <div class="article-section">
+<p>あれは……？<br><br>
+<img src="images/hall/5.png" alt="5"><br>
+<img src="images/hall/6.png" alt="6"><br>
+</p>
+  </div>
+
+  <div class="dialogue-box">
+    <img src="images/hall/ojii.png" alt="オジイ">
+    <div class="dialogue-text">
+      「ほうもつに つられて とじこめられた はぐれへいたい」じゃ
+    </div>
+  </div>
+
+  <div class="article-section">
+<p>よかったですね、オジイ！<br><br>
+さあ、気を取り直してホールの中を探索してみましょう。<br><br>
+
+<img src="images/hall/7.png" alt="7"><br><br>
+
+エスカレーターを降りて、第2バルコニーへ行ってみます。<br><br>
+
+<img src="images/hall/8.png" alt="8"><br><br>
+
+この会場は、座席数3,190席。<br>
+入り口は1階にあり、そこから地下1階、2階、3階と下がる形で建てられています。<br><br>
+
+<img src="images/hall/9.png" alt="9"><br><br>
+
+ここは地下1階にある「第2バルコニー」。<br>
+いわゆる2階席のエリアです。<br>
+さっそく中に入っていきましょう！<br>
+</p>
+  </div>
+
+  <div class="dialogue-box">
+    <img src="images/hall/ojii.png" alt="オジイ">
+    <div class="dialogue-text">
+      どきどき〜
+    </div>
+  </div>
+
+  <div class="article-section">
+<p>
+<img src="images/hall/10.png" alt="10"><br><br>
+
+ここは第2バルコニーのC2エリア最後列。<br>
+ほぼ正面に位置しているので、ステージは見やすいですが、<br>
+ちょっぴり遠いですね。<br>
+</p>
+  </div>
+
+  <div class="dialogue-box">
+    <img src="images/hall/ojii.png" alt="オジイ">
+    <div class="dialogue-text">
+      かおまでみるには そうがんきょうが ひつようじゃのう〜
+    </div>
+  </div>
+
+  <div class="article-section">
+<p>
+<img src="images/hall/11.png" alt="11"><br><br>
+
+第2バルコニーの3列目です。<br>
+この辺りなら、目がいい人は裸眼でもいいかも。<br>
+</p>
+
+<img src="images/hall/12.png" alt="12"><br><br>
+
+さて、第2バルコニーの最前列です。<br>
+2階といってもこの辺りはとても見やすいですね。<br><br>
+
+<img src="images/hall/13.png" alt="13"><br><br>
+
+最前列でも端の席だと少し心許ないですね。<br>
+ただ、この辺りはおそらく「見切れ席」か「サイドシート」に指定されています。<br>
+今回のチケットはどちらも当たることはないので、安心してよいでしょう。<br>
+  </div>
+
+  <div class="dialogue-box">
+    <img src="images/hall/ojii.png" alt="オジイ">
+    <div class="dialogue-text">
+      ほかにも たちみせき なんかも あるんじゃ〜
+    </div>
+  </div>
+
+  <div class="article-section">
+<p>
+<img src="images/hall/14.png" alt="14"><br><br>
+
+第1バルコニーに降りてみました。<br>
+ここもおそらく「見切れ席」もしくは「サイドシート」です。<br><br>
+やっぱり見づらい場所ですが、<br>
+公演が始まってからでもチケットが残っている可能性の高い席です。<br><br>
+
+すでに何度も公演を見ている人や、ある程度見る場所が決まっている人は<br>
+この席でも楽しめるんですよ。
+</p>
+  </div>
+
+  <div class="dialogue-box">
+    <img src="images/hall/ojii.png" alt="オジイ">
+    <div class="dialogue-text">
+      ものずきじゃのう〜
+    </div>
+  </div>
+
+  <div class="article-section">
+<p>
+<img src="images/hall/15.png" alt="15"><br><br>
+
+さて、第1バルコニーの正面寄りの席です。<br>
+第1バルコニーの最後列ですが、ここもかなり見やすい場所になります。<br><br>
+ここより前の席であれば、観劇にあたって何も心配することはなさそうです。<br>
+</p>
+  </div>
+
+  <div class="article-section">
+<p>
+<img src="images/hall/16.png" alt="16"><br><br>
+
+ここまでは当たる可能性が高そうな席を見てきましたが、<br>
+ここで一度いちばん前の「アリーナ」も見ていきましょう。<br><br>
+現在はまっさらなエリアになっていますが、公演時は他の座席と同じイスがずらりと並びます。<br>
+このエリアが当たれば言うことなしです！
+</p>
+  </div>
+
+  <div class="dialogue-box">
+    <img src="images/hall/ojii.png" alt="オジイ">
+    <div class="dialogue-text">
+      かんどうじゃ〜
+    </div>
+  </div>
+
+  <div class="article-section">
+<p>
+ここまでスルーしてきてしまいましたが……<br>
+最も遠い「第3バルコニー」も見てみましょう。<br><br>
+見え方は、果たして……？<br><br>
+<img src="images/hall/17.png" alt="17"><br><br>
+おや！それほど見えにくさは感じません。<br>
+ここは最後列ですが、細かい動きは見えにくい分、<br>
+全体を見渡すのにぴったりなんです。<br><br>
+色々な場所につい目移りしてしまう公演では、<br>
+これくらいの距離で見るのもまた楽しい体験になりそうです。<br><br>
+<img src="images/hall/18.png" alt="18"><br><br>
+第3アリーナの最前列です。<br>
+ここも十分に見やすい席ですね。<br>
+</p>
+  </div>
+
+  <div class="dialogue-box">
+    <img src="images/hall/ojii.png" alt="オジイ">
+    <div class="dialogue-text">
+      どのせきも そのせきなりの みかたが あるものじゃ〜
+    </div>
+  </div>
+
+  <div class="article-section">
+<p>
+最後に、ウワサの座席を見てみましょう。<br><br>
+<img src="images/hall/19.png" alt="19"><br><br>
+
+TOHOなどの映画館や、以前行った青年館のような厚みのある席ではないようです。<br>
+一定数、このイスと相性の悪い人がいる様子。<br>
+音楽ライブ等にも使われるホールなので、そもそも座席があまり使われないよう。<br>
+休憩中に立ち上がったり、伸びをしたり、<br>
+体を疲れさせない工夫をしましょう。
+</p>
+  </div>
+
+  <div class="article-section">
+<p>
+<img src="images/hall/20.png" alt="20"><br><br>
+
+さあ、ひと通り会場を見てまわりましたね。<br>
+観劇のイメージはついてきましたか？<br><br>
+それでは、このグッズ販売スペースになりそうなエリアでお別れです。<br>
+数日後にはここに立っているイメージをしながら、<br>
+当日を楽しみにしていてください！</p>
+  </div>
+
+  <div class="article-section">
+<p>
+<img src="images/hall/21.png" alt="21"><br><br>
+<br>
+  </div>
+
+  <div class="dialogue-box">
+    <img src="images/hall/ojii.png" alt="オジイ">
+    <div class="dialogue-text">
+      てんじょうが ほうかいしておるんじゃ〜
+    </div>
+  </div>
+
+  <div class="article-section">
+<p>
+
+<br>さようなら！<br><br>
+</p>
+  </div>
+
+<a class="top-button" href="index.html">TOP</a>
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>画像クイズ（3択）</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f2f1ee;
+      font-family: 'Oswald', sans-serif;
+      color: #2e2e2e;
+      text-align: center;
+      padding: 30px 20px;
+    }
+
+    .quiz-box {
+      max-width: 700px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 30px;
+      border-left: 6px solid #004aad;
+      border-radius: 10px;
+      box-shadow: 2px 2px 10px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      color: #004aad;
+      margin-bottom: 30px;
+    }
+
+    .option-img {
+      width: 40%;
+      max-width: 140px;
+      margin: 10px;
+      border: 3px solid transparent;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .option-img:hover {
+      transform: scale(1.05);
+      border-color: #004aad;
+    }
+
+    .result-section {
+      display: none;
+      margin-top: 40px;
+    }
+.result-section .option {
+  display: block;
+  margin-bottom: 30px; /* 適度に間隔を空ける */
+  text-align: center;
+}
+
+    .caption-img {
+      width: 28%;
+      max-width: 200px;
+      border-radius: 10px;
+      margin: 15px 10px 5px;
+    }
+
+    .caption-text {
+      font-size: 0.9em;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    .index-button {
+      display: block;
+      width: fit-content;
+      margin: 40px auto 0;
+      padding: 10px 20px;
+      background-color: transparent;
+      color: #004aad;
+      border: 2px solid #004aad;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.95em;
+      transition: background-color 0.3s ease;
+    }
+
+    .index-button:hover {
+      background-color: #004aad;
+      color: #ffffff;
+    }
+.option {
+  display: inline-block;
+  text-align: center;
+  margin: 10px;
+  cursor: pointer;
+  vertical-align: top; /* ← これが上揃えのポイント */
+}
+
+.option-number {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #004aad;
+  margin-bottom: 5px;
+}
+
+  </style>
+</head>
+<body>
+<h1>手塚ソムリエ</h1>
+  <div class="quiz-box" id="quiz-box">
+    <h2>Q. 跡部の「手塚ぁ！」を探してください</h2>
+<div class="option" onclick="selectAnswer('A')">
+  <div class="option-number">A</div>
+  <img src="images/tezuka/1.jpg" alt="Option A" class="option-img">
+</div>
+
+<div class="option" onclick="selectAnswer('B')">
+  <div class="option-number">B</div>
+  <img src="images/tezuka/2.png" alt="Option B" class="option-img">
+</div>
+
+<div class="option" onclick="selectAnswer('C')">
+  <div class="option-number">C</div>
+  <img src="images/tezuka/3.png" alt="Option C" class="option-img">
+</div>
+
+<div class="option" onclick="selectAnswer('C')">
+  <div class="option-number">D</div>
+  <img src="images/tezuka/4.png" alt="Option D" class="option-img">
+</div>
+  </div>
+
+  <div class="result-section" id="result-section">
+    <h2>正解は…A</h2>
+<p>とにかくライバルたちに名前を呼ばれがちな手塚国光。<br>
+今回は誰に何回呼ばれるのか、乞うご期待！</p>
+    
+  <div class="option">
+    <div class="option-number">A</div>
+    <img src="images/tezuka/1.jpg" class="caption-img" alt="跡部">
+    <img src="images/tezuka/1a.jpg" class="caption-img" alt="跡部">
+    <p class="caption-text">コミックス18巻 Genius151：関東氷帝戦<br>
+最初に全力で手塚に叫んでいるのはやっぱりこの人。</p>
+  </div>
+
+  <div class="option">
+    <div class="option-number">B</div>
+    <img src="images/tezuka/2.png" class="caption-img" alt="木手">
+    <img src="images/tezuka/2a.png" class="caption-img" alt="木手">
+    <p class="caption-text">コミックス31巻 Genius271：全国比嘉戦<br>
+前回みんなで見たね♡ 動揺の「て」。</p>
+  </div>
+
+  <div class="option">
+    <div class="option-number">C</div>
+    <img src="images/tezuka/3.png" class="caption-img" alt="千歳">
+    <img src="images/tezuka/3a.png" class="caption-img" alt="千歳">
+    <p class="caption-text">コミックス38巻 Genius333：全国四天宝寺戦<br>
+一番しっかりと語尾を伸ばしていた人。</p>
+  </div>
+
+  <div class="option">
+    <div class="option-number">D</div>
+    <img src="images/tezuka/4.png" class="caption-img" alt="真田">
+    <img src="images/tezuka/4a.png" class="caption-img" alt="真田">
+    <p class="caption-text">コミックス39巻 Genius350：全国立海戦<br>
+試合外でもちょこちょこ呼んでいる印象のある人。今回メイン校じゃないけど呼ぶかな？</p>
+  </div>
+
+  </div>
+
+  <a href="index.html" class="index-button">TOP</a>
+
+  <script>
+  function selectAnswer(choice) {
+    // ここで選択された選択肢に応じて処理も追加可能（今回は共通結果なので不要）
+    showResult(choice);
+  }
+
+    function showResult(selected) {
+      document.getElementById('quiz-box').style.display = 'none';
+      document.getElementById('result-section').style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>

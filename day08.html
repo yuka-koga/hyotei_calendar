@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day08 Moonsault</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f2f1ee;
+      color: #2e2e2e;
+      font-family: 'Oswald', sans-serif;
+      margin: 0;
+      padding: 30px 20px;
+    }
+
+    h1 {
+      color: #119fd4;
+      font-size: 1.8em;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    #score, #highscore {
+      font-size: 20px;
+      padding: 10px 20px;
+      text-align: center;
+    }
+    #score {
+      font-weight: bold;
+      color: #119fd4;
+    }
+    #highscore {
+      color: #2e2e2e;
+    }
+
+    #game {
+      position: relative;
+      width: 100%;
+      max-width: 600px;
+      height: 400px;
+      background: #ffffff;
+      border: 2px solid #119fd4;
+      border-radius: 10px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    #player {
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      bottom: 0;
+      left: 50px;
+      background-image: url('images/mukahi/player01.png');
+      background-size: cover;
+      background-position: center;
+    }
+
+    #player.jump {
+      background-image: url('images/mukahi/player02.png');
+    }
+
+#obstacle {
+  width: 55px;
+  height: 55px;
+  position: absolute;
+  bottom: 0;
+  left: 100%;
+  background-size: cover;        /* ← これが必要！ */
+  background-position: center;   /* ← これも */
+}
+
+    .jump {
+      animation: jumpAnim 0.5s ease-out;
+    }
+
+    @keyframes jumpAnim {
+      0% { bottom: 0; }
+      50% { bottom: 100px; }
+      100% { bottom: 0; }
+    }
+
+#message {
+  display: none;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.main-message {
+  font-size: 48px;
+  color: red;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+#sub-message {
+  font-size: 0.9em;
+  color: red;
+  margin-bottom: 20px;
+}
+
+    #retry {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 20px;
+      background-color: #119fd4;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    @media screen and (max-width: 480px) {
+      h1 {
+        font-size: 1.5em;
+      }
+      #game {
+        height: 300px;
+      }
+    }
+#start-screen {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #f2f1ee;
+  color: #119fd4;
+  font-family: 'Oswald', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center; /* ← テキスト中央寄せ */
+  padding: 0 20px;     /* ← スマホ用に余白 */
+  z-index: 1000;
+}
+
+#start-screen h1 {
+  font-size: 3em;
+  margin-bottom: 10px;
+}
+
+#start-screen p {
+  font-size: 1.2em;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+#start-btn {
+  padding: 12px 24px;
+  font-size: 1.2em;
+  background-color: #119fd4;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#start-btn:hover {
+  background-color: #0b6f96;
+}
+.footer-button {
+  position: fixed;
+  bottom: 20px;
+  left: 0;                 /* 明示的に左端に固定 */
+  width: 100%;
+  text-align: center;      /* 中央寄せ */
+  z-index: 2000;
+}
+
+.top-button {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 2px solid #119fd4;
+  background-color: transparent;
+  color: #119fd4;
+  font-weight: bold;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.top-button:hover {
+  background-color: #119fd4;
+  color: #ffffff;
+}
+.hidden {
+  display: none;
+}
+  </style>
+</head>
+<body>
+<div id="start-screen">
+  <h1>Moonsault</h1>
+  <p>もっと飛んでみそ！もっともっと！<br>Press Space or Tap to Jump</p>
+  <button id="start-btn">START GAME</button>
+</div>
+
+  <h1>Moonsault</h1>
+  <div id="score">Score: 0</div>
+  <div id="highscore">High Score: 0</div>
+  <div id="game">
+    <div id="player"></div>
+    <div id="obstacle"></div>
+<div id="message">
+  <div class="main-message">GAME OVER</div>
+  <div id="sub-message">俺のアクロバットについてこいよ！</div>
+  <button id="retry">RETRY</button>
+</div>
+
+<div class="footer-button hidden">
+  <a href="index.html" class="top-button">TOP</a>
+</div>
+
+  <script>
+    const player = document.getElementById('player');
+    const obstacle = document.getElementById('obstacle');
+    const message = document.getElementById('message');
+    const retryBtn = document.getElementById('retry');
+    const scoreDisplay = document.getElementById('score');
+    const highscoreDisplay = document.getElementById('highscore');
+    const game = document.getElementById('game');
+
+const obstacleImages = [
+  'images/hyotei/hiyoshi.png',
+  'images/hyotei/kabaji.png',
+  'images/hyotei/ootori.png',
+  'images/hyotei/akutagawa.png',
+  'images/hyotei/shishido.png',
+  'images/hyotei/taki.png',
+  'images/hyotei/yushi.png',
+  'images/hyotei/atobe.png',
+];
+
+    let score = 0;
+    let highscore = localStorage.getItem('highscore') || 0;
+    let obstacleX = window.innerWidth;
+    let speed = 10;
+    let isGameOver = false;
+    let animationId;
+
+    function getSpeedFromScore(score) {
+      return 10 + score * 0.05;
+    }
+
+    function updateHighScoreDisplay() {
+      highscoreDisplay.textContent = `High Score: ${highscore}`;
+    }
+
+    function startGameLoop() {
+      obstacleX -= speed;
+      obstacle.style.left = obstacleX + 'px';
+
+      const playerRect = player.getBoundingClientRect();
+      const obsRect = obstacle.getBoundingClientRect();
+
+      if (
+        playerRect.left < obsRect.right &&
+        playerRect.right > obsRect.left &&
+        playerRect.bottom > obsRect.top
+      ) {
+        endGame();
+        return;
+      }
+
+if (obstacleX < -30) {
+  obstacleX = game.clientWidth;
+  score++;
+  speed = getSpeedFromScore(score);
+  scoreDisplay.textContent = `Score: ${score}`;
+
+  // 新しい障害物画像をランダムに切り替え
+  const randomIndex = Math.floor(Math.random() * obstacleImages.length);
+  obstacle.style.backgroundImage = `url('${obstacleImages[randomIndex]}')`;
+}
+
+      if (!isGameOver) {
+        animationId = requestAnimationFrame(startGameLoop);
+      }
+    }
+
+function startGame() {
+  isGameOver = false;
+  score = 0;
+  speed = 10;
+  obstacleX = game.clientWidth;
+  obstacle.style.left = obstacleX + 'px';
+  scoreDisplay.textContent = 'Score: 0';
+  updateHighScoreDisplay();
+
+  // 最初の障害物画像をランダムに設定
+  const randomIndex = Math.floor(Math.random() * obstacleImages.length);
+  obstacle.style.backgroundImage = `url('${obstacleImages[randomIndex]}')`;
+
+  requestAnimationFrame(startGameLoop);
+}
+
+    function endGame() {
+      isGameOver = true;
+      cancelAnimationFrame(animationId);
+      if (score > highscore) {
+        highscore = score;
+        localStorage.setItem('highscore', highscore);
+      }
+      message.style.display = 'block';
+    }
+
+    function jumpHandler(e) {
+      if ((e.code === 'Space' || e.type === 'click') && !player.classList.contains('jump')) {
+        player.classList.add('jump');
+        setTimeout(() => {
+          player.classList.remove('jump');
+        }, 500);
+      }
+    }
+
+    document.addEventListener('keydown', jumpHandler);
+    game.addEventListener('click', () => {
+      jumpHandler({ type: 'click' });
+    });
+
+    retryBtn.addEventListener('click', () => {
+      message.style.display = 'none';
+      startGame();
+    });
+
+    updateHighScoreDisplay();
+    startGame();
+const startScreen = document.getElementById('start-screen');
+const startBtn = document.getElementById('start-btn');
+const footerButton = document.querySelector('.footer-button'); // ← 追加
+
+// 最初はゲームを止めておく（isGameOver = true）
+isGameOver = true;
+
+startBtn.addEventListener('click', () => {
+  startScreen.style.display = 'none';
+  footerButton.classList.remove('hidden'); // ← TOPボタンを表示
+  startGame();
+});
+  </script>
+</body>
+</html>

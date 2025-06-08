@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Day 16 - AI生成 菊丸英二</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+  <style>
+@font-face {
+  font-family: 'DonguriDuel';
+  src: url('x10y12pxDonguriDuel.ttf') format('truetype');
+}
+    body {
+      background-color: #f2f1ee;
+      color: #2e2e2e;
+      font-family: 'Oswald', sans-serif;
+      margin: 0;
+      padding: 30px 20px;
+      line-height: 1.8;
+    }
+
+    h1 {
+      color: #004aad;
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 1.8em;
+    }
+
+    .article-section {
+      max-width: 800px;
+      margin: 0 auto 60px;
+      background-color: #ffffff;
+      padding: 20px;
+      border-left: 6px solid #004aad;
+      box-shadow: 2px 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .article-section img {
+      width: 50%;
+      height: auto;
+      border-radius: 6px;
+      margin-bottom: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+
+    }
+
+    .article-section p {
+      margin: 0;
+    }
+
+/* 会話ボックス */
+.dialogue-box {
+  display: flex;
+  align-items: center; /* ←ここを変更（flex-end → center） */
+  gap: 15px;
+  background-color: #ffffff;
+  border: 2px solid #004aad;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 40px auto;
+  max-width: 700px;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+}
+
+.dialogue-box img {
+  width: 80px;
+  height: auto;
+  border-radius: 6px;
+}
+
+/* テキスト */
+.dialogue-text {
+  text-align: left;
+  font-size: 0.95em;
+  line-height: 1.5;
+  margin: auto 0; /* ←縦の余白を調整して中央揃えに */
+  font-family: 'DonguriDuel', sans-serif; /* ←追加 */
+}
+
+    @media screen and (max-width: 600px) {
+      .dialogue-box {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .dialogue-text {
+        text-align: center;
+      }
+    }
+.section-button {
+  display: inline-block;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding: 10px 20px;
+  background-color: #004aad;
+  color: #ffffff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.section-button:hover {
+  background-color: #002f72;
+}
+.highlight {
+  color: #004aad;
+  font-weight: bold;
+  background-color: #e8f0ff;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+.top-button {
+  display: block;
+  width: fit-content;
+  margin: 30px auto 0;
+  padding: 10px 20px;
+  border: 2px solid #004aad;
+  background-color: transparent;
+  color: #004aad;
+  font-weight: bold;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.top-button:hover {
+  background-color: #002f6c;
+  color: #ffffff;
+}
+  </style>
+</head>
+<body>
+
+  <h1>AI Generate: 菊丸英二を生成しよう</h1>
+
+  <div class="article-section">
+    <p>まずは12代目 菊丸英二の顔を見てきてください。</p>
+  <a href="https://www.tennimu.com/cast/tennimu/fourth/se_kikumaru2/" class="section-button">▶ 英二を見る</a>
+    <p>さすがに菊丸英二すぎる！<br><br>
+原作やアニメ版の画像をそのままAIに食わせて美しく生成したら、<br>
+この顔が生まれるのではないでしょうか？<br>
+そう思って「AI生成菊丸」と言い慣わしてきました。<br><br>
+今回はそれを実証していきたいと思います！</p>
+  </div>
+
+  <!-- 会話ボックス -->
+  <div class="dialogue-box">
+    <img src="images/hyotei/atobe.png" alt="跡部景吾">
+    <div class="dialogue-text">
+      おれさま の うつくしさ には まけるがな …
+    </div>
+  </div>
+
+  <div class="article-section">
+    <p><span class="highlight">🎾 やり方</span><br>
+1. AIにインターネット上にある「菊丸英二」の情報を読み込ませる<br>
+2. その情報をもとに実写画像を生成してもらう<br><br>
+とっても簡単。<br>
+そして最初に生成されたのがこちら。</p>
+<img src="images/kikumaru/1.png" alt="菊丸1">
+<p>あ〜。<br>
+「まだ可愛い路線で行くかどうか迷っている27歳の菊丸英二」だ。<br>
+そんな英二は見たくない。<br><br>
+とはいえ路線は悪くなかったと思う。<br>
+髪などはそこそこ再現できてるね。</p>
+</div>
+
+  <div class="article-section">
+<p><span class="highlight">🎾 追加指示</span><br>
+「もう少し目を大きく」「中学生らしく幼く」「中性的な顔立ち」etc.<br><br>
+足りてなさそうな要素をもろもろ足してみる。<br>
+経験上、あまり一気に指示を入れすぎると、<br>
+多分全然違う人になっちゃうから制御が難しい。<br><br>
+どうだ！？</p>
+<img src="images/kikumaru/2.png" alt="菊丸2">
+<p>かわいい〜！誰！？<br>
+英国育ちって感じだね〜<br>
+テニスが紳士のスポーツだったことを思い出させてくれる。<br><br>
+こんなお上品な子は青学にはいない。<br>
+お前は緑山中に行け。</p>
+</div>
+
+  <div class="article-section">
+<p><span class="highlight">🎾 追加指示</span><br>
+「15歳」「猫目」etc.<br><br>
+年齢もさることながら、おめめがまんまるすぎるのがいけないのかも。<br>
+この子がもう少し天使からヤンチャ系に成長すれば、<br>
+ちょうどいい具合に菊丸（実写）になりそう。<br>
+はつらつさ、天真爛漫な雰囲気自体は悪くない！<br><br>
+どうかな？</p>
+<img src="images/kikumaru/3.png" alt="菊丸3">
+<p>天使、脱せず。<br>
+あ〜もう顔が笑ってすらいない。<br>
+これはこれで美しいが…方向性が柳生比呂士（4th）だね。<br>
+なぜか文字入り。柳蓮二が発行している雑誌？<br><br>
+顔はいいけどこの人テニスやってなさそう。<br>
+後ろにレコードとか飾ってるし。<br>
+</p>
+  </div>
+
+  <div class="article-section">
+<p><span class="highlight">🎾 追加指示</span><br>
+「1枚目に生成した画像に服装と髪型を寄せる」<br><br>
+アンニュイな雰囲気を除けばいい気がする。<br>
+最初に生成された27歳菊丸の雰囲気だけを引用することができれば…。<br><br>
+元気はつらつ、美英二が出てくる気がする。<br>
+もう完成する気がする！<br><br>
+耽美をかき消せ！！</p>
+<img src="images/kikumaru/4.png" alt="菊丸4">
+<p>惜しい〜〜〜！<br>
+キッズに戻っちまった！大石の大バカヤロ〜〜〜！<br><br>
+これはこれですごくかわいい、すごくテニミュキッズだね。<br>
+次回の関東立海に菊丸（幼少期）として出演する気はありませんか？<br>
+</p>
+  </div>
+
+  <div class="article-section">
+<p><span class="highlight">🎾 追加指示</span><br>
+「この子を15歳に成長させる」<br><br>
+これでいけるはず！<br><br>
+ちょっと可愛すぎて力強さをそこまで感じられないけど、<br>
+今、10歳くらいだからあと5歳歳を取れば<br>
+菊丸英二（実写版）がやってくるはず…。<br><br>
+いけるぞ！！！</p>
+<img src="images/kikumaru/5.png" alt="菊丸5">
+<p>は〜〜〜JO1の人きちゃった。<br>
+もうジャージですらないじゃん。喪服かな〜。<br>
+申し訳程度の「SEIGAKU」。<br><br>
+どんなにイケメンでもこれで菊丸英二って言われたら<br>
+さすがにファンと大石が黙ってないよ〜。<br><br>
+英字はこんなに利発そうじゃない。
+</p>
+  </div>
+
+  <div class="article-section">
+<p><span class="highlight">🎾 追加指示</span><br>
+「眉毛をもう少し薄く」「副は青学ジャージ」<br><br>
+
+多分凛々しすぎるんだと思う。<br>
+もうちょっと薄眉だったらいいんじゃない？<br>
+顔が濃すぎるんだよね。<br>
+
+あと服はやっぱりジャージに戻したいよね。<br><br>
+そろそろ来るかな？<br>
+まだかな？</p>
+<img src="images/kikumaru/6.png" alt="菊丸6">
+<p>海堂薫来ちゃった。
+</p>
+  </div>
+
+  <div class="article-section">
+<p>というわけで、<br>
+たとえAIでも菊丸を実写化することはできない。<br>
+12代目 青学 菊丸英二が最高傑作だということでした！<br><br>
+AIを持ってしても生み出すことのできない、<br>
+神の創りし菊丸英二を、公演でしかと見届けよ〜〜！<br><br>
+<p><span class="highlight">🎾 追加指示</span><br>
+「なんでもいいからかっこよく頼む〜〜〜！」<br>
+<img src="images/kikumaru/7.png" alt="菊丸7">
+<br>さようなら！
+</p>
+  </div>
+<a class="top-button" href="index.html">TOP</a>
+</body>
+</html>

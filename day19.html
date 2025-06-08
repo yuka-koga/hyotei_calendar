@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 19 - 日吉若メーカー</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f2f1ee;
+      font-family: 'Oswald', sans-serif;
+      text-align: center;
+      color: #2e2e2e;
+      padding: 30px 20px;
+    }
+
+    .box {
+      background-color: #ffffff;
+      border: 2px solid #119fd4;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 30px auto;
+      max-width: 600px;
+      box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .option {
+      display: inline-block;
+      margin: 10px;
+      padding: 10px 20px;
+      background-color: #119fd4;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1em;
+    }
+
+    .option:hover {
+      background-color: #0c7fb3;
+    }
+.index-button {
+  display: block;
+  width: fit-content;
+  margin: 60px auto 0;
+  padding: 10px 20px;
+  background-color: transparent;
+  color: #119fd4;
+  border: 2px solid #119fd4;
+  border-radius: 8px;
+  font-family: 'Oswald', sans-serif;
+  text-decoration: none;
+  font-size: 0.95em;
+  transition: background-color 0.3s ease;
+}
+
+.index-button:hover {
+  background-color: #119fd4;
+  color: #ffffff;
+}
+#user-answer span,
+#correct-answer span {
+  display: inline-block;
+  margin: 4px;
+  padding: 6px 10px;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95em;
+}
+
+  </style>
+</head>
+<body>
+
+<div id="start" class="box">
+  <h2>🥚 日吉若 Maker</h2>
+  <p>日吉若の個人情報を明らかにしよう！</p>
+  <button class="option" onclick="startQuiz()">Start</button>
+</div>
+
+<div id="quiz" class="box" style="display:none;">
+  <h2 id="step-title">1 / 10</h2>
+  <div id="options"></div>
+</div>
+
+<div id="result" class="box" style="display:none;">
+  <h2 id="result-title"></h2>
+  <p><strong>あなたの回答:</strong></p>
+  <p id="user-answer"></p>
+  <div id="correct-section" style="display:none;">
+    <p><strong>正答:</strong></p>
+    <p id="correct-answer"></p>
+  </div>
+</div>
+
+<script>
+  const quizData = [
+    { options: ["日吉若", "海堂薫", "切原赤也", "新垣浩一"], answer: "日吉若" },
+    { options: ["1年", "2年", "留年"], answer: "2年" },
+    { options: ["アグレッシブベースライナー", "常夏ゲッター", "スピードスター"], answer: "アグレッシブベースライナー" },
+    { options: ["性格は冷静沈着で", "好物は焼肉定食で", "性格は悪逆非道で"], answer: "性格は冷静沈着で" },
+    { options: ["夏の暑さにも負けない", "桜に攫われやすい", "他人に流されない"], answer: "他人に流されない" },
+    { options: ["かなり大胆な面もあるが", "少し神経質な面もあるが", "いかにも怪しい顔であるが"], answer: "少し神経質な面もあるが" },
+    { options: ["常に堂々とし", "常に前向きで", "常に前のめりで"], answer: "常に前向きで" },
+    { options: ["虎視眈々と正レギュラーを狙っていた様だ", "死屍累々を積み重ねていった様だ", "楽楽明細を使っていた様だ"], answer: "虎視眈々と正レギュラーを狙っていた様だ" },
+    { options: ["誕生日は12月5日", "誕生日は12月4日", "誕生日は12月3日"], answer: "誕生日は12月5日" },
+    { options: ["血液型はA型", "血液型はAB型", "血液型はB型"], answer: "血液型はAB型" },
+    { options: ["好きな言葉は「アンタ潰すよ！」", "好きな言葉は「下剋上だ！」", "好きな言葉は「エクスタシー！」"], answer: "好きな言葉は「下剋上だ！」" },
+  ];
+
+  let currentStep = 0;
+  const userAnswers = [];
+
+  function startQuiz() {
+    document.getElementById('start').style.display = 'none';
+    document.getElementById('quiz').style.display = 'block';
+    showQuestion();
+  }
+
+  function showQuestion() {
+    const step = currentStep + 1;
+    document.getElementById('step-title').textContent = `${step} / 11`;
+    const optionsDiv = document.getElementById('options');
+    optionsDiv.innerHTML = '';
+    quizData[currentStep].options.forEach(option => {
+      const btn = document.createElement('button');
+      btn.className = 'option';
+      btn.textContent = option;
+      btn.onclick = () => selectAnswer(option);
+      optionsDiv.appendChild(btn);
+    });
+  }
+
+  function selectAnswer(choice) {
+    userAnswers.push(choice);
+    currentStep++;
+    if (currentStep < quizData.length) {
+      showQuestion();
+    } else {
+      showResult();
+    }
+  }
+
+  function showResult() {
+    document.getElementById('quiz').style.display = 'none';
+    document.getElementById('result').style.display = 'block';
+    const userSentence = userAnswers.join(' ');
+    const correctSentence = quizData.map(q => q.answer).join(' ');
+
+  const userHTML = userAnswers.map(word => `<span>${word}</span>`).join('');
+  document.getElementById('user-answer').innerHTML = userHTML;
+
+  if (userSentence === correctSentence) {
+    document.getElementById('result-title').textContent = '🐣 完璧！日吉若、ここに爆誕！';
+  } else {
+    document.getElementById('result-title').textContent = '❌ 不正解！データが足りないようだ！';
+
+    const correctHTML = quizData.map(q => `<span>${q.answer}</span>`).join('');
+    document.getElementById('correct-answer').innerHTML = correctHTML;
+    document.getElementById('correct-section').style.display = 'block';
+  }
+}
+</script>
+<a href="index.html" class="index-button">TOP</a>
+
+</body>
+</html>

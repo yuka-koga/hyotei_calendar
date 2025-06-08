@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Day 22 - 俺様に相応しいライバルは誰なのか、教えろォ！</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      background-color: #f2f1ee;
+      color: #2e2e2e;
+      font-family: 'Oswald', sans-serif;
+      margin: 0;
+      padding: 30px 20px;
+    }
+
+    .test-box {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      border: 2px solid #119fd4;
+    }
+
+    h1 {
+      color: #119fd4;
+      font-size: 1.4em;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .question {
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    .options button {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 12px;
+      border: 2px solid #119fd4;
+      background-color: transparent;
+      color: #2e2e2e;
+      font-size: 1em;
+      cursor: pointer;
+      transition: 0.3s;
+      border-radius: 5px;
+    }
+
+    .options button:hover {
+      background-color: #119fd4;
+      color: #ffffff;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-size: 1.1em;
+      color: #119fd4;
+    }
+
+    @media screen and (max-width: 480px) {
+      h1 { font-size: 1.4em; }
+      .test-box { padding: 15px; }
+    }
+.links {
+  margin-top: 15px;
+  text-align: center;
+}
+.links a {
+  display: inline-block;
+  background-color: #119fd4;
+  color: #ffffff;
+  padding: 10px 16px;
+  margin: 8px 5px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+.links a:hover {
+  background-color: #0d84b4;
+}
+.result-box {
+  text-align: center;
+  margin-top: 30px;
+}
+.result-box h2 {
+  color: #000000;  /* ← 診断結果タイトルを黒に */
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+.main-result {
+  font-size: 1.2em;
+  color: #119fd4;
+  margin-bottom: 15px;
+}
+.comment {
+  font-size: 0.93em;
+  color: #2e2e2e;
+}
+.retry {
+  display: inline-block;
+  background-color: #555555;
+  color: #ffffff;
+  padding: 10px 16px;
+  margin-top: 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.retry:hover {
+  background-color: #333333;
+}
+.top-button {
+  display: block;
+  width: fit-content;
+  margin: 30px auto 0;
+  padding: 10px 20px;
+  border: 2px solid #119fd4;
+  background-color: transparent;
+  color: #119fd4;
+  font-weight: bold;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.top-button:hover {
+  background-color: #119fd4;
+  color: #ffffff;
+}
+  </style>
+</head>
+<body>
+  <div class="test-box" id="quiz">
+    <h1>俺様に相応しいライバルは誰なのか、教えろォ！</h1>
+    <div class="question" id="question"></div>
+    <div class="options" id="options"></div>
+    <div class="result" id="result"></div>
+  </div>
+<a class="top-button" href="index.html">TOP</a>
+
+  <script>
+    const questions = [
+      { q: '跡部のライバルに相応しい人物は…', a: ['A メガネが似合う', 'B メガネが似合わない'] },
+      { q: '跡部のライバルに相応しい人物の名前の雰囲気は？', a: ['A 光っている', 'B 歴史を感じる', 'C かわいらしい', 'D 温かみがある', 'E 自分（跡部）と似ている'] },
+      { q: '跡部のライバルに相応しい人物が使う必殺技は？', a: ['A 零式ドロップショット', 'B 〇〇ゾーン', 'C 百錬自得の極み', 'D 無我の境地', 'E 才気煥発の極み'] },
+      { q: '今どんな気持ち？', a: ['A気持', 'B気持', 'C気持', 'D気持', 'E気持'] }
+    ];
+
+    const results = {
+      A: '手塚ァ！お前以外ありえねえ！',
+      B: '手塚ァ！腕は鈍ってねえだろうな？',
+      C: '手塚ァ！時にはなまけることも必要だぜ！',
+      D: '手塚ァ！グラウンド走らせ数なら負けねえぜ！',
+      E: '手塚ァ！俺様のFishingにも酔いな！'
+    };
+
+    let current = 0;
+    const answers = [];
+
+    const questionEl = document.getElementById('question');
+    const optionsEl = document.getElementById('options');
+    const resultEl = document.getElementById('result');
+
+    function loadQuestion() {
+      const q = questions[current];
+      questionEl.textContent = q.q;
+      optionsEl.innerHTML = '';
+
+      q.a.forEach(choice => {
+        const btn = document.createElement('button');
+        btn.textContent = choice;
+btn.onclick = () => {
+  answers.push(choice[0]);  // ← 頭文字だけ記録（"A"〜"E"）
+  current++;
+  if (current < questions.length) {
+    loadQuestion();
+  } else {
+    showResult();
+  }
+};
+        optionsEl.appendChild(btn);
+      });
+    }
+
+    function showResult() {
+      questionEl.textContent = '';
+      optionsEl.innerHTML = '';
+      const count = {};
+      answers.forEach(a => count[a] = (count[a] || 0) + 1);
+      const mostFrequent = Object.entries(count).sort((a, b) => b[1] - a[1])[0][0];
+      resultEl.innerHTML = `
+  <div class="result-box">
+    <h2>🎯 診断結果 🎯</h2>
+<p class="comment">俺様のライバルは…</p>
+    <p class="main-result">${results[mostFrequent]}</p>
+    <p class="comment">跡部のライバルに一番近いのは手塚国光でした♪<br>
+    舞台ではどんな関係性が描かれるか、注目してみよう♪</p>
+    <div class="links">
+      <p><a href="https://www.tennimu.com/4th_2025hyotei/cast/#:~:text=KUNIMITSU%20TEZUKA-,KUNIMITSU,-TEZUKA" target="_blank">▶ 手塚をみる</a></p>
+    </div>
+    <a class="retry" href="">もう一度やる</a>
+  </div>
+`;
+    }
+
+    loadQuestion();
+  </script>
+</body>
+</html>

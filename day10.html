@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Day 10 - Special</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      background-color: #f2f1ee;
+      color: #2e2e2e;
+      font-family: 'Oswald', sans-serif;
+      margin: 0;
+      padding: 30px 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #119fd4;
+      margin-bottom: 30px;
+    }
+
+    .card {
+      background-color: #ffffff;
+      border: 2px solid #119fd4;
+      border-radius: 10px;
+      padding: 20px;
+      max-width: 600px;
+      margin: 0 auto 30px;
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .card img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .card img:hover {
+      transform: scale(1.02);
+    }
+
+    .author {
+      font-weight: bold;
+      color: #119fd4;
+      margin-bottom: 10px;
+    }
+
+    .comment {
+      line-height: 1.6;
+    }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(255,255,255,0.3);
+    }
+
+    .lightbox:active {
+      display: none;
+    }
+
+    @media screen and (max-width: 480px) {
+      body {
+        padding: 20px 10px;
+      }
+    }
+
+.top-button {
+  display: block;
+  width: fit-content;
+  margin: 30px auto 0;
+  padding: 10px 20px;
+  border: 2px solid #119fd4;
+  background-color: transparent;
+  color: #119fd4;
+  font-weight: bold;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.top-button:hover {
+  background-color: #119fd4;
+  color: #ffffff;
+}
+  </style>
+</head>
+<body>
+  <h1>🎨 Special Thank's</h1>
+
+  <div class="card">
+    <img src="images/sample_illustration.jpg" alt="イラストの説明文" onclick="openLightbox(this.src)" />
+    <div class="author">by いらすとや さん</div>
+    <div class="comment">
+      このイラストは跡部様の圧倒的王者感を表現した一枚です。マントのひるがえり方にこだわりました！
+    </div>
+  </div>
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <img id="lightbox-img" src="" alt="拡大表示画像">
+  </div>
+<a class="top-button" href="index.html">TOP</a>
+
+  <script>
+    function openLightbox(src) {
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      lightboxImg.src = src;
+      lightbox.style.display = 'flex';
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').style.display = 'none';
+    }
+  </script>
+
+</body>
+</html>
