@@ -242,6 +242,22 @@
     .higa-link-button:hover {
       background-color: #4b007e;
     }
+.fixed-header-info {
+  margin: 0 auto 30px;
+  max-width: 600px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-family: 'Oswald', monospace;
+  color: #004aad;
+  box-shadow: 0 0 6px rgba(0,0,0,0.1);
+}
+
+.fixed-header-info > div {
+  font-size: 0.9em;
+  margin: 4px 0;
+}
 
     @media screen and (max-width: 360px) {
       body {
@@ -257,12 +273,32 @@
         padding: 12px;
       }
     }
+
+.x-timeline-wrapper {
+  margin: 20px auto;
+  max-width: 600px;
+}
+
   </style>
 </head>
 <body>
 <div class="top-image">
   <img src="images/top_3.jpg" alt="カウントダウン" />
 </div>
+
+<div class="fixed-header-info">
+  <div id="date-text"></div>
+  <div id="date-countdown"></div>
+</div>
+
+<div class="x-timeline-wrapper">
+  <a class="twitter-timeline"
+     data-height="400"
+     href="https://twitter.com/TennimuNews?ref_src=twsrc%5Etfw">
+    Tweets by TennimuNews
+  </a>
+</div>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 <div class="calendar-grid">
   <a href="day24.html" class="calendar-button btn-blue" data-day="1">24</a>
@@ -346,10 +382,4 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 <body>
-  <!-- カウントダウン表示（右上） -->
-  <div id="date-countdown" class="date-display"></div>
-
-  <!-- 日付とお知らせ（別要素） -->
-  <div id="date-text" class="date-display"></div>
-
 </html>
