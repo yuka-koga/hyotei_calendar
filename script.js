@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const startDate = new Date('2025-04-12');
+  const startDate = new Date('2025-06-12');
   const today = new Date();
   const elapsedDays = Math.floor((today - startDate) / (1000 * 60 * 60 * 24)) + 1;
 
