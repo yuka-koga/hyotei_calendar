@@ -129,6 +129,29 @@
   background-color: #002f6c;
   color: #ffffff;
 }
+/* モーダル背景 */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+}
+
+/* 拡大画像 */
+.modal img {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.5);
+  background: #fff;
+}
+
   </style>
 </head>
 <body>
@@ -145,36 +168,36 @@
 
   <!-- 会話ボックス -->
   <div class="dialogue-box">
-    <img src="images/hall/ojii.png" alt="オジイ">
     <div class="dialogue-text">
       オジイ じゃ〜
     </div>
+    <img src="images/hall/ojii.png" alt="オジイ">
   </div>
 
   <div class="article-section">
-<img src="images/hall/kanadeviahall.jpeg" alt="カナデビアホール正面"><br>
+<img src="images/hall/kanadeviahall.jpeg" alt="カナデビアホール正面" onclick="openModal('images/hall/kanadeviahall.jpeg')" /><br>
 <p>ここがカナデビアホールの入り口です。<br>
 カラフルな入り口で楽しげな気分を盛り上げてくれますね。<br>
 </p>
 </div>
 
   <div class="dialogue-box">
-    <img src="images/hall/ojii.png" alt="オジイ">
     <div class="dialogue-text">
       ことしの 4がつに とうきょうドームシティホールから なまえがかわったんじゃ〜
     </div>
+    <img src="images/hall/ojii.png" alt="オジイ">
   </div>
 
   <div class="article-section">
 <p>オジイはなんでも知っていますね。<br>
 それではさっそく中に入ってみましょう。<br>
-<img src="images/hall/1.png" alt="1"><br>
+<img src="images/hall/1.png" alt="1" onclick="openModal('images/hall/1.png')"/><br>
 広い入り口をくぐると、現代的なデザインの内装が広がります。<br>
-<img src="images/hall/2.png" alt="2"><br>
+<img src="images/hall/2.png" alt="2" onclick="openModal('images/hall/2.png')"/><br>
 微生物のような図柄を横目に見ながら、中へ。<br>
 当日はこの辺りでチケットを確認することになりそうですね。<br>
 事前に手元に用意しておくとスムーズです。<br>
-<img src="images/hall/3.png" alt="3"><br>
+<img src="images/hall/3.png" alt="3" onclick="openModal('images/hall/3.png')"/><br>
 中にはさっそく案内板が。<br>
 さて、どの階から見ていこうかな。<br><br>
 おや…？
@@ -182,10 +205,10 @@
 </div>
 
   <div class="dialogue-box">
-    <img src="images/hall/ojii.png" alt="オジイ">
     <div class="dialogue-text">
       いたぞ　あそこじゃ〜
     </div>
+    <img src="images/hall/ojii.png" alt="オジイ">
   </div>
 
   <div class="article-section">
@@ -193,45 +216,45 @@
 空から見えた動物を見つけて捕獲し、コレクションするミニ企画、<br>
 「公演アニマルズ」。<br><br>
 今日はどんな動物を見つけたのでしょう？<br>
-<img src="images/hall/4.png" alt="4"><br>
+<img src="images/hall/4.png" alt="4" onclick="openModal('images/hall/4.png')"/><br>
 </p>
   </div>
 
   <div class="dialogue-box">
-    <img src="images/hall/ojii.png" alt="オジイ">
     <div class="dialogue-text">
       そりゃ　いけ〜〜〜
     </div>
+    <img src="images/hall/ojii.png" alt="オジイ">
   </div>
 
   <div class="article-section">
 <p>あれは……？<br><br>
-<img src="images/hall/5.png" alt="5"><br>
-<img src="images/hall/6.png" alt="6"><br>
+<img src="images/hall/5.png" alt="5" onclick="openModal('images/hall/5.png')"/><br>
+<img src="images/hall/6.png" alt="6" onclick="openModal('images/hall/6.png')"/><br>
 </p>
   </div>
 
   <div class="dialogue-box">
-    <img src="images/hall/ojii.png" alt="オジイ">
     <div class="dialogue-text">
       「ほうもつに つられて とじこめられた はぐれへいたい」じゃ
     </div>
+    <img src="images/hall/ojii.png" alt="オジイ">
   </div>
 
   <div class="article-section">
-<p>よかったですね、オジイ！<br><br>
+<p>よかったですね！<br><br>
 さあ、気を取り直してホールの中を探索してみましょう。<br><br>
 
-<img src="images/hall/7.png" alt="7"><br><br>
+<img src="images/hall/7.png" alt="7" onclick="openModal('images/hall/7.png')"/><br><br>
 
 エスカレーターを降りて、第2バルコニーへ行ってみます。<br><br>
 
-<img src="images/hall/8.png" alt="8"><br><br>
+<img src="images/hall/8.png" alt="8" onclick="openModal('images/hall/8.png')"/><br><br>
 
 この会場は、座席数3,190席。<br>
 入り口は1階にあり、そこから地下1階、2階、3階と下がる形で建てられています。<br><br>
 
-<img src="images/hall/9.png" alt="9"><br><br>
+<img src="images/hall/9.png" alt="9" onclick="openModal('images/hall/9.png')"/><br><br>
 
 ここは地下1階にある「第2バルコニー」。<br>
 いわゆる2階席のエリアです。<br>
@@ -240,15 +263,15 @@
   </div>
 
   <div class="dialogue-box">
-    <img src="images/hall/ojii.png" alt="オジイ">
     <div class="dialogue-text">
       どきどき〜
     </div>
+    <img src="images/hall/ojii.png" alt="オジイ">
   </div>
 
   <div class="article-section">
 <p>
-<img src="images/hall/10.png" alt="10"><br><br>
+<img src="images/hall/10.png" alt="10" onclick="openModal('images/hall/10.png')"/><br><br>
 
 ここは第2バルコニーのC2エリア最後列。<br>
 ほぼ正面に位置しているので、ステージは見やすいですが、<br>
@@ -257,26 +280,26 @@
   </div>
 
   <div class="dialogue-box">
-    <img src="images/hall/ojii.png" alt="オジイ">
     <div class="dialogue-text">
       かおまでみるには そうがんきょうが ひつようじゃのう〜
     </div>
+    <img src="images/hall/ojii.png" alt="オジイ">
   </div>
 
   <div class="article-section">
 <p>
-<img src="images/hall/11.png" alt="11"><br><br>
+<img src="images/hall/11.png" alt="11" onclick="openModal('images/hall/11.png')"/><br><br>
 
 第2バルコニーの3列目です。<br>
 この辺りなら、目がいい人は裸眼でもいいかも。<br>
 </p>
 
-<img src="images/hall/12.png" alt="12"><br><br>
+<img src="images/hall/12.png" alt="12" onclick="openModal('images/hall/12.png')"/><br><br>
 
 さて、第2バルコニーの最前列です。<br>
 2階といってもこの辺りはとても見やすいですね。<br><br>
 
-<img src="images/hall/13.png" alt="13"><br><br>
+<img src="images/hall/13.png" alt="13" onclick="openModal('images/hall/13.png')"/><br><br>
 
 最前列でも端の席だと少し心許ないですね。<br>
 ただ、この辺りはおそらく「見切れ席」か「サイドシート」に指定されています。<br>
@@ -284,15 +307,15 @@
   </div>
 
   <div class="dialogue-box">
-    <img src="images/hall/ojii.png" alt="オジイ">
     <div class="dialogue-text">
       ほかにも たちみせき なんかも あるんじゃ〜
     </div>
+    <img src="images/hall/ojii.png" alt="オジイ">
   </div>
 
   <div class="article-section">
 <p>
-<img src="images/hall/14.png" alt="14"><br><br>
+<img src="images/hall/14.png" alt="14" onclick="openModal('images/hall/14.png')"/><br><br>
 
 第1バルコニーに降りてみました。<br>
 ここもおそらく「見切れ席」もしくは「サイドシート」です。<br><br>
@@ -305,15 +328,15 @@
   </div>
 
   <div class="dialogue-box">
-    <img src="images/hall/ojii.png" alt="オジイ">
     <div class="dialogue-text">
       ものずきじゃのう〜
     </div>
+    <img src="images/hall/ojii.png" alt="オジイ">
   </div>
 
   <div class="article-section">
 <p>
-<img src="images/hall/15.png" alt="15"><br><br>
+<img src="images/hall/15.png" alt="15" onclick="openModal('images/hall/15.png')"/><br><br>
 
 さて、第1バルコニーの正面寄りの席です。<br>
 第1バルコニーの最後列ですが、ここもかなり見やすい場所になります。<br><br>
@@ -323,7 +346,7 @@
 
   <div class="article-section">
 <p>
-<img src="images/hall/16.png" alt="16"><br><br>
+<img src="images/hall/16.png" alt="16" onclick="openModal('images/hall/16.png')"/><br><br>
 
 ここまでは当たる可能性が高そうな席を見てきましたが、<br>
 ここで一度いちばん前の「アリーナ」も見ていきましょう。<br><br>
@@ -333,10 +356,10 @@
   </div>
 
   <div class="dialogue-box">
-    <img src="images/hall/ojii.png" alt="オジイ">
     <div class="dialogue-text">
       かんどうじゃ〜
     </div>
+    <img src="images/hall/ojii.png" alt="オジイ">
   </div>
 
   <div class="article-section">
@@ -344,29 +367,29 @@
 ここまでスルーしてきてしまいましたが……<br>
 最も遠い「第3バルコニー」も見てみましょう。<br><br>
 見え方は、果たして……？<br><br>
-<img src="images/hall/17.png" alt="17"><br><br>
-おや！それほど見えにくさは感じません。<br>
+<img src="images/hall/17.png" alt="17" onclick="openModal('images/hall/17.png')"/><br><br>
+思ったよりは見えにくさを感じません。<br>
 ここは最後列ですが、細かい動きは見えにくい分、<br>
 全体を見渡すのにぴったりなんです。<br><br>
 色々な場所につい目移りしてしまう公演では、<br>
 これくらいの距離で見るのもまた楽しい体験になりそうです。<br><br>
-<img src="images/hall/18.png" alt="18"><br><br>
+<img src="images/hall/18.png" alt="18" onclick="openModal('images/hall/18.png')"/><br><br>
 第3アリーナの最前列です。<br>
 ここも十分に見やすい席ですね。<br>
 </p>
   </div>
 
   <div class="dialogue-box">
-    <img src="images/hall/ojii.png" alt="オジイ">
     <div class="dialogue-text">
       どのせきも そのせきなりの みかたが あるものじゃ〜
     </div>
+    <img src="images/hall/ojii.png" alt="オジイ">
   </div>
 
   <div class="article-section">
 <p>
 最後に、ウワサの座席を見てみましょう。<br><br>
-<img src="images/hall/19.png" alt="19"><br><br>
+<img src="images/hall/19.png" alt="19" onclick="openModal('images/hall/19.png')"/><br><br>
 
 TOHOなどの映画館や、以前行った青年館のような厚みのある席ではないようです。<br>
 一定数、このイスと相性の悪い人がいる様子。<br>
@@ -378,7 +401,7 @@ TOHOなどの映画館や、以前行った青年館のような厚みのある�
 
   <div class="article-section">
 <p>
-<img src="images/hall/20.png" alt="20"><br><br>
+<img src="images/hall/20.png" alt="20" onclick="openModal('images/hall/20.png')"/><br><br>
 
 さあ、ひと通り会場を見てまわりましたね。<br>
 観劇のイメージはついてきましたか？<br><br>
@@ -389,15 +412,15 @@ TOHOなどの映画館や、以前行った青年館のような厚みのある�
 
   <div class="article-section">
 <p>
-<img src="images/hall/21.png" alt="21"><br><br>
+<img src="images/hall/21.png" alt="21" onclick="openModal('images/hall/21.png')"/><br><br>
 <br>
   </div>
 
   <div class="dialogue-box">
-    <img src="images/hall/ojii.png" alt="オジイ">
     <div class="dialogue-text">
       てんじょうが ほうかいしておるんじゃ〜
     </div>
+    <img src="images/hall/ojii.png" alt="オジイ">
   </div>
 
   <div class="article-section">
@@ -406,6 +429,22 @@ TOHOなどの映画館や、以前行った青年館のような厚みのある�
 <br>さようなら！<br><br>
 </p>
   </div>
+<script>
+function openModal(src) {
+  const modal = document.getElementById('modal');
+  const modalImg = document.getElementById('modal-img');
+  modalImg.src = src;
+  modal.style.display = 'flex';
+}
+
+function closeModal() {
+  document.getElementById('modal').style.display = 'none';
+}
+</script>
+<!-- モーダル構造 -->
+<div id="modal" class="modal" onclick="closeModal()">
+  <img id="modal-img" src="" alt="拡大画像" />
+</div>
 
 <a class="top-button" href="index.html">TOP</a>
 </body>
