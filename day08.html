@@ -168,7 +168,7 @@ body {
 }
 .footer-button {
   position: fixed;
-  bottom: 20px;
+  bottom: 5px;
   left: 0;                 /* 明示的に左端に固定 */
   width: 100%;
   text-align: center;      /* 中央寄せ */
@@ -194,33 +194,38 @@ body {
 .hidden {
   display: none;
 }
+/* ② CSSも変更（absolute → fixed）*/
 #jump-button {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  padding: 12px 24px;
+  position: fixed; /* ← これ！ */
+  bottom: 65px;
+  left: 50%; /* ← 中央寄せ */
+  transform: translateX(-50%); /* ← 中央にピッタリ */
+  width: 70px;
+  height: 70px;
   background-color: #119fd4;
   color: white;
-  font-size: 1.1em;
+  font-size: 0.8em;
+  padding: 10px;           /* 全体に余白を広げる */
   font-weight: bold;
   border: none;
-  border-radius: 10px;
+  border-radius: 50%;
   cursor: pointer;
-  z-index: 100;
+  z-index: 2000; /* 高めに */
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   user-select: none;
-}
-
-#jump-button:hover {
-  background-color: #0b6f96;
+  touch-action: manipulation;
+  display: none; /* ← これを追加 */
 }
 
 @media screen and (max-width: 480px) {
   #jump-button {
-    padding: 10px 20px;
-    font-size: 1em;
-    bottom: 10px;
-    right: 10px;
+    width: 60px;
+    height: 60px;
+    font-size: 0.9em;
+    bottom: 75px;
   }
 }
 
@@ -239,13 +244,14 @@ body {
 <div id="game">
   <div id="player"></div>
   <div id="obstacle"></div>
-  <div id="jump-button">JUMP</div> <!-- 追加！ -->
   <div id="message">
     <div class="main-message">GAME OVER</div>
     <div id="sub-message">俺のアクロバットについてこいよ！</div>
     <button id="retry">RETRY</button>
   </div>
 </div>
+  <div id="jump-button">JUMP</div> <!-- 追加！ -->
+
 
 <div class="footer-button hidden">
   <a href="index.html" class="top-button">TOP</a>
@@ -356,14 +362,20 @@ function startGame() {
       message.style.display = 'block';
     }
 
-    function jumpHandler(e) {
-      if ((e.code === 'Space' || e.type === 'click') && !player.classList.contains('jump')) {
-        player.classList.add('jump');
-        setTimeout(() => {
-          player.classList.remove('jump');
-        }, 500);
-      }
-    }
+function jumpHandler(e) {
+  // すべての入力（キーボード・画面タップ・ボタン）に対応
+  const isJumpInput =
+    (e.code === 'Space') || // スペースキー
+    (e.type === 'click') || // 通常クリック
+    (e.target && e.target.id === 'jump-button'); // JUMPボタン
+
+  if (isJumpInput && !player.classList.contains('jump')) {
+    player.classList.add('jump');
+    setTimeout(() => {
+      player.classList.remove('jump');
+    }, 500);
+  }
+}
 
     document.addEventListener('keydown', jumpHandler);
     retryBtn.addEventListener('click', () => {
@@ -378,18 +390,22 @@ const startBtn = document.getElementById('start-btn');
 const footerButton = document.querySelector('.footer-button'); // ← 追加
 
 // 最初はゲームを止めておく（isGameOver = true）
+// 1. 最初は止めておく
 isGameOver = true;
+updateHighScoreDisplay();
 
+// 2. ボタン押したら開始！
 startBtn.addEventListener('click', () => {
   startScreen.style.display = 'none';
-  footerButton.classList.remove('hidden'); // ← TOPボタンを表示
-  startGame();
+  footerButton.classList.remove('hidden');
+document.getElementById('jump-button').style.display = 'flex';
+  isGameOver = false; // ← ここでゲーム開始許可
+  startGame();        // ← ゲーム実行
 });
 
 const jumpButton = document.getElementById('jump-button');
-jumpButton.addEventListener('click', () => {
-  jumpHandler({ type: 'click' });
-});
+jumpButton.addEventListener('click', jumpHandler);
+
   </script>
 </body>
 </html>
