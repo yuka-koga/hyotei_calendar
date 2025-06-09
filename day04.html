@@ -99,6 +99,28 @@
   color: #004aad;
   margin-bottom: 5px;
 }
+/* モーダル背景 */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+}
+
+/* 拡大画像 */
+.modal img {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.5);
+  background: #fff;
+}
 
   </style>
 </head>
@@ -134,32 +156,32 @@
     
   <div class="option">
     <div class="option-number">A</div>
-    <img src="images/tezuka/1.jpg" class="caption-img" alt="跡部">
-    <img src="images/tezuka/1a.jpg" class="caption-img" alt="跡部">
+    <img src="images/tezuka/1.jpg" class="caption-img" alt="跡部" onclick="openModal('images/tezuka/1.jpg')" />
+    <img src="images/tezuka/1a.jpg" class="caption-img" alt="跡部" onclick="openModal('images/tezuka/1a.jpg')" />
     <p class="caption-text">コミックス18巻 Genius151：関東氷帝戦<br>
 最初に全力で手塚に叫んでいるのはやっぱりこの人。</p>
   </div>
 
   <div class="option">
     <div class="option-number">B</div>
-    <img src="images/tezuka/2.jpg" class="caption-img" alt="木手">
-    <img src="images/tezuka/2a.jpg" class="caption-img" alt="木手">
+    <img src="images/tezuka/2.jpg" class="caption-img" alt="木手" onclick="openModal('images/tezuka/2.jpg')" />
+    <img src="images/tezuka/2a.jpg" class="caption-img" alt="木手" onclick="openModal('images/tezuka/2a.jpg')" />
     <p class="caption-text">コミックス31巻 Genius271：全国比嘉戦<br>
 前回みんなで見たね♡ 動揺の「て」。</p>
   </div>
 
   <div class="option">
     <div class="option-number">C</div>
-    <img src="images/tezuka/3.jpg" class="caption-img" alt="千歳">
-    <img src="images/tezuka/3a.jpg" class="caption-img" alt="千歳">
+    <img src="images/tezuka/3.jpg" class="caption-img" alt="千歳" onclick="openModal('images/tezuka/3.jpg')" />
+    <img src="images/tezuka/3a.jpg" class="caption-img" alt="千歳" onclick="openModal('images/tezuka/3a.jpg')" />
     <p class="caption-text">コミックス38巻 Genius333：全国四天宝寺戦<br>
 一番しっかりと語尾を伸ばしていた人。</p>
   </div>
 
   <div class="option">
     <div class="option-number">D</div>
-    <img src="images/tezuka/4.jpg" class="caption-img" alt="真田">
-    <img src="images/tezuka/4a.jpg" class="caption-img" alt="真田">
+    <img src="images/tezuka/4.jpg" class="caption-img" alt="真田" onclick="openModal('images/tezuka/4.jpg')" />
+    <img src="images/tezuka/4a.jpg" class="caption-img" alt="真田" onclick="openModal('images/tezuka/4a.jpg')" />
     <p class="caption-text">コミックス39巻 Genius350：全国立海戦<br>
 試合外でもちょこちょこ呼んでいる印象のある人。今回メイン校じゃないけど呼ぶかな？</p>
   </div>
@@ -178,7 +200,23 @@
       document.getElementById('quiz-box').style.display = 'none';
       document.getElementById('result-section').style.display = 'block';
     }
+function openModal(src) {
+  const modal = document.getElementById('modal');
+  const modalImg = document.getElementById('modal-img');
+  modalImg.src = src;
+  modal.style.display = 'flex';
+}
+
+function closeModal() {
+  document.getElementById('modal').style.display = 'none';
+}
+
   </script>
+
+<!-- モーダル構造 -->
+<div id="modal" class="modal" onclick="closeModal()">
+  <img id="modal-img" src="" alt="拡大画像" />
+</div>
 
 </body>
 </html>

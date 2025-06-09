@@ -66,17 +66,6 @@
       z-index: 1000;
     }
 
-    .lightbox img {
-      max-width: 90%;
-      max-height: 80%;
-      border-radius: 10px;
-      box-shadow: 0 0 20px rgba(255,255,255,0.3);
-    }
-
-    .lightbox:active {
-      display: none;
-    }
-
     @media screen and (max-width: 480px) {
       body {
         padding: 20px 10px;
@@ -101,13 +90,36 @@
   background-color: #119fd4;
   color: #ffffff;
 }
+/* モーダル背景 */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+}
+
+/* 拡大画像 */
+.modal img {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.5);
+  background: #fff;
+}
+
   </style>
 </head>
 <body>
   <h1>🎨 Special Thank's: Ayaka Okamoto</h1>
 
   <div class="card">
-    <img src="images/special/IMG_7182.JPG" alt="ダブルス2" onclick="openLightbox(this.src)" />
+    <img src="images/special/IMG_7182.JPG" alt="ダブルス2" onclick="openModal('images/special/IMG_7182.JPG')" />
     <div class="author">from: Ayaka Okamoto</div>
     <div class="comment">
       本日はスペシャルなイラストが到着しています！<br><br>
@@ -120,22 +132,24 @@
 彩夏先生、素敵なイラストをありがとうございました！
     </div>
   </div>
-  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
-    <img id="/special/IMG_7182.JPG" src="" alt="拡大表示画像">
-  </div>
+<!-- モーダル構造 -->
+<div id="modal" class="modal" onclick="closeModal()">
+  <img id="modal-img" src="" alt="拡大画像" />
+</div>
 <a class="top-button" href="index.html">TOP</a>
 
-  <script>
-    function openLightbox(src) {
-      const lightbox = document.getElementById('lightbox');
-      const lightboxImg = document.getElementById('lightbox-img');
-      lightboxImg.src = src;
-      lightbox.style.display = 'flex';
-    }
+<script>
+function openModal(src) {
+  const modal = document.getElementById('modal');
+  const modalImg = document.getElementById('modal-img');
+  modalImg.src = src;
+  modal.style.display = 'flex';
+}
 
-    function closeLightbox() {
-      document.getElementById('lightbox').style.display = 'none';
-    }
-  </script>
+function closeModal() {
+  document.getElementById('modal').style.display = 'none';
+}
+</script>
+
 </body>
 </html>

@@ -129,6 +129,29 @@
   background-color: #002f6c;
   color: #ffffff;
 }
+/* モーダル背景 */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+}
+
+/* 拡大画像 */
+.modal img {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.5);
+  background: #fff;
+}
+
   </style>
 </head>
 <body>
@@ -159,7 +182,7 @@
 2. その情報をもとに実写画像を生成してもらう<br><br>
 とっても簡単。<br>
 そして最初に生成されたのがこちら。</p>
-<img src="images/kikumaru/1.png" alt="菊丸1">
+<img src="images/kikumaru/1.png" alt="菊丸1" onclick="openModal('images/kikumaru/1.png')" />
 <p>あ〜。<br>
 「まだ可愛い路線で行くかどうか迷っている27歳の菊丸英二」だ。<br>
 そんな英二は見たくない。<br><br>
@@ -174,7 +197,7 @@
 経験上、あまり一気に指示を入れすぎると、<br>
 多分全然違う人になっちゃうから制御が難しい。<br><br>
 どうだ！？</p>
-<img src="images/kikumaru/2.png" alt="菊丸2">
+<img src="images/kikumaru/2.png" alt="菊丸2" onclick="openModal('images/kikumaru/2.png')" />
 <p>かわいい〜！誰！？<br>
 英国育ちって感じだね〜<br>
 テニスが紳士のスポーツだったことを思い出させてくれる。<br><br>
@@ -190,7 +213,7 @@
 ちょうどいい具合に菊丸（実写）になりそう。<br>
 はつらつさ、天真爛漫な雰囲気自体は悪くない！<br><br>
 どうかな？</p>
-<img src="images/kikumaru/3.png" alt="菊丸3">
+<img src="images/kikumaru/3.png" alt="菊丸3" onclick="openModal('images/kikumaru/3.png')" />
 <p>天使、脱せず。<br>
 あ〜もう顔が笑ってすらいない。<br>
 これはこれで美しいが…方向性が柳生比呂士（4th）だね。<br>
@@ -208,7 +231,7 @@
 元気はつらつ、美英二が出てくる気がする。<br>
 もう完成する気がする！<br><br>
 耽美をかき消せ！！</p>
-<img src="images/kikumaru/4.png" alt="菊丸4">
+<img src="images/kikumaru/4.png" alt="菊丸4" onclick="openModal('images/kikumaru/4.png')" />
 <p>惜しい〜〜〜！<br>
 キッズに戻っちまった！大石の大バカヤロ〜〜〜！<br><br>
 これはこれですごくかわいい、すごくテニミュキッズだね。<br>
@@ -224,7 +247,7 @@
 今、10歳くらいだからあと5歳歳を取れば<br>
 菊丸英二（実写版）がやってくるはず…。<br><br>
 いけるぞ！！！</p>
-<img src="images/kikumaru/5.png" alt="菊丸5">
+<img src="images/kikumaru/5.png" alt="菊丸5" onclick="openModal('images/kikumaru/5.png')" />
 <p>は〜〜〜JO1の人きちゃった。<br>
 もうジャージですらないじゃん。喪服かな〜。<br>
 申し訳程度の「SEIGAKU」。<br><br>
@@ -245,7 +268,7 @@
 あと服はやっぱりジャージに戻したいよね。<br><br>
 そろそろ来るかな？<br>
 まだかな？</p>
-<img src="images/kikumaru/6.png" alt="菊丸6">
+<img src="images/kikumaru/6.png" alt="菊丸6" onclick="openModal('images/kikumaru/6.png')" />
 <p>海堂薫来ちゃった。
 </p>
   </div>
@@ -258,10 +281,27 @@ AIを持ってしても生み出すことのできない、<br>
 神の創りし菊丸英二を、公演でしかと見届けよ〜〜！<br><br>
 <p><span class="highlight">🎾 追加指示</span><br>
 「なんでもいいからかっこよく頼む〜〜〜！」<br>
-<img src="images/kikumaru/7.png" alt="菊丸7">
+<img src="images/kikumaru/7.png" alt="菊丸7" onclick="openModal('images/kikumaru/7.png')" />
 <br>さようなら！
 </p>
   </div>
 <a class="top-button" href="index.html">TOP</a>
+<script>
+function openModal(src) {
+  const modal = document.getElementById('modal');
+  const modalImg = document.getElementById('modal-img');
+  modalImg.src = src;
+  modal.style.display = 'flex';
+}
+
+function closeModal() {
+  document.getElementById('modal').style.display = 'none';
+}
+</script>
+<!-- モーダル構造 -->
+<div id="modal" class="modal" onclick="closeModal()">
+  <img id="modal-img" src="" alt="拡大画像" />
+</div>
+
 </body>
 </html>

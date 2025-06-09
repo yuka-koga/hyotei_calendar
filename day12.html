@@ -67,6 +67,29 @@
   background-color: #119fd4;
   color: #ffffff;
 }
+/* モーダル背景 */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+}
+
+/* 拡大画像 */
+.modal img {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.5);
+  background: #fff;
+}
+
   </style>
 </head>
 <body>
@@ -75,7 +98,7 @@
     <div class="text">
       <p>出演者全員が写っているキービジュアルが出ているので、見ていきたいと思います。</p>
     </div>
-    <img src="images/GsKc2fKaUAIaKRa.jpeg" alt="引用画像の説明">
+    <img src="images/GsKc2fKaUAIaKRa.jpeg" alt="キービジュアル" onclick="openModal('images/GsKc2fKaUAIaKRa.jpeg')" />
     <a class="source-link" href="https://x.com/TennimuNews/status/1928285240658719088" target="_blank" rel="noopener noreferrer">引用元：@TennimuNews</a>
     <div class="text">
       <p>気づき①：跡部様は華麗に片腕上げポーズ…かと思いきや、実はジャージをぶん投げている。</p>
@@ -91,6 +114,21 @@
     </div>
   </div>
 <a href="index.html" class="index-button">TOP</a>
+<script>
+function openModal(src) {
+  const modal = document.getElementById('modal');
+  const modalImg = document.getElementById('modal-img');
+  modalImg.src = src;
+  modal.style.display = 'flex';
+}
 
+function closeModal() {
+  document.getElementById('modal').style.display = 'none';
+}
+</script>
+<!-- モーダル構造 -->
+<div id="modal" class="modal" onclick="closeModal()">
+  <img id="modal-img" src="" alt="拡大画像" />
+</div>
 </body>
 </html>
