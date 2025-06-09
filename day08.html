@@ -260,15 +260,16 @@ const obstacleImages = [
 
       const playerRect = player.getBoundingClientRect();
       const obsRect = obstacle.getBoundingClientRect();
+const margin = 10; // 余裕を持たせる範囲（px）
 
-      if (
-        playerRect.left < obsRect.right &&
-        playerRect.right > obsRect.left &&
-        playerRect.bottom > obsRect.top
-      ) {
-        endGame();
-        return;
-      }
+if (
+  playerRect.left + margin < obsRect.right &&
+  playerRect.right - margin > obsRect.left &&
+  playerRect.bottom > obsRect.top + margin
+) {
+  endGame();
+  return;
+}
 
 if (obstacleX < -30) {
   obstacleX = game.clientWidth;
@@ -300,6 +301,12 @@ function startGame() {
   obstacle.style.backgroundImage = `url('${obstacleImages[randomIndex]}')`;
 
   requestAnimationFrame(startGameLoop);
+  if (window.innerWidth < 480) {
+    obstacleX = game.clientWidth + 150;
+  } else {
+    obstacleX = game.clientWidth + 50;
+  }
+  obstacle.style.left = obstacleX + 'px';
 }
 
     function endGame() {
