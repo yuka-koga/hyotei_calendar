@@ -260,7 +260,7 @@ const obstacleImages = [
 
       const playerRect = player.getBoundingClientRect();
       const obsRect = obstacle.getBoundingClientRect();
-const margin = 10; // 余裕を持たせる範囲（px）
+const margin = 15; // 余裕を持たせる範囲（px）
 
 if (
   playerRect.left + margin < obsRect.right &&
@@ -272,12 +272,17 @@ if (
 }
 
 if (obstacleX < -30) {
-  obstacleX = game.clientWidth;
+  if (window.innerWidth < 480) {
+    obstacleX = game.clientWidth + 150;
+  } else {
+    obstacleX = game.clientWidth + 50;
+  }
+
+  // スコア加算・画像変更など
   score++;
   speed = getSpeedFromScore(score);
   scoreDisplay.textContent = `Score: ${score}`;
 
-  // 新しい障害物画像をランダムに切り替え
   const randomIndex = Math.floor(Math.random() * obstacleImages.length);
   obstacle.style.backgroundImage = `url('${obstacleImages[randomIndex]}')`;
 }
