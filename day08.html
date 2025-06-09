@@ -194,6 +194,36 @@ body {
 .hidden {
   display: none;
 }
+#jump-button {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  padding: 12px 24px;
+  background-color: #119fd4;
+  color: white;
+  font-size: 1.1em;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  z-index: 100;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  user-select: none;
+}
+
+#jump-button:hover {
+  background-color: #0b6f96;
+}
+
+@media screen and (max-width: 480px) {
+  #jump-button {
+    padding: 10px 20px;
+    font-size: 1em;
+    bottom: 10px;
+    right: 10px;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -206,13 +236,15 @@ body {
   <h1>Moonsault</h1>
   <div id="score">Score: 0</div>
   <div id="highscore">High Score: 0</div>
-  <div id="game">
-    <div id="player"></div>
-    <div id="obstacle"></div>
-<div id="message">
-  <div class="main-message">GAME OVER</div>
-  <div id="sub-message">俺のアクロバットについてこいよ！</div>
-  <button id="retry">RETRY</button>
+<div id="game">
+  <div id="player"></div>
+  <div id="obstacle"></div>
+  <div id="jump-button">JUMP</div> <!-- 追加！ -->
+  <div id="message">
+    <div class="main-message">GAME OVER</div>
+    <div id="sub-message">俺のアクロバットについてこいよ！</div>
+    <button id="retry">RETRY</button>
+  </div>
 </div>
 
 <div class="footer-button hidden">
@@ -334,10 +366,6 @@ function startGame() {
     }
 
     document.addEventListener('keydown', jumpHandler);
-    game.addEventListener('click', () => {
-      jumpHandler({ type: 'click' });
-    });
-
     retryBtn.addEventListener('click', () => {
       message.style.display = 'none';
       startGame();
@@ -356,6 +384,11 @@ startBtn.addEventListener('click', () => {
   startScreen.style.display = 'none';
   footerButton.classList.remove('hidden'); // ← TOPボタンを表示
   startGame();
+});
+
+const jumpButton = document.getElementById('jump-button');
+jumpButton.addEventListener('click', () => {
+  jumpHandler({ type: 'click' });
 });
   </script>
 </body>
