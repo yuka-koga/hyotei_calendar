@@ -123,6 +123,13 @@
   background-color: #119fd4;
   color: #ffffff;
 }
+.character-image {
+  display: block;
+  max-width: 50%;
+  height: auto;
+  margin: 10px auto 20px; /* 上下に少し余白・中央揃え */
+  border-radius: 8px; /* 任意：角を少し丸くするなら */
+}
 
   </style>
 </head>
@@ -158,16 +165,17 @@
     <button class="option" onclick="answerQ4('B')">くるくるウェーブ</button>
   </div>
 
-  <div id="type1" class="result"><h2>✨Eishiro Kite✨</h2><p>崇高な美学と他を圧倒する眼光の鋭さには平伏せざるを得ない。しかし彼とはいえど沖縄のわちゃわちゃ感から逃れることはできないのだ！うちなー部員のブリーダーとしてその手腕を発揮する（させられる）姿を見守ろう。</p>
+  <div id="type1" class="result"><h2>✨Eishiro Kite✨</h2><img src="images/higa/kite.png" alt="鳳 長太郎の画像" class="character-image" />
+<p>崇高な美学と他を圧倒する眼光の鋭さには平伏せざるを得ない。しかし彼とはいえど沖縄のわちゃわちゃ感から逃れることはできないのだ！うちなー部員のブリーダーとしてその手腕を発揮する（させられる）姿を見守ろう。</p>
   <button class="top-button" onclick="goToTop()">もう一度診断する</button>
 </div>
-  <div id="type2" class="result"><h2>✨Haginosuke Taki✨</h2><p>正レギュラーの座を行ったり来たりするこの方。線の細さとは裏腹に人情に熱い一面も。今回は応援役としてベンチ入りしてくれているはず。さすが氷帝、トリオポジションすらも美しい！</p>
+  <div id="type2" class="result"><h2>✨Haginosuke Taki✨</h2><img src="images/hyotei/taki.png" alt="滝" class="character-image" /><p>正レギュラーの座を行ったり来たりするこの方。線の細さとは裏腹に人情に熱い一面も。今回は応援役としてベンチ入りしてくれているはず。さすが氷帝、トリオポジションすらも美しい！</p>
   <button class="top-button" onclick="goToTop()">もう一度診断する</button>
 </div>
-  <div id="type3" class="result"><h2>✨Shusuke Fuji✨</h2><p>暗黒微笑の王子様とは彼のこと。サボテンに話しかけたりといったお茶目な一面を端正な挙措一点でカバーしている。美しさではカバーしきれないトンチキを発見していきたいところ。技名の愉しさにも刮目せよ。</p>
+  <div id="type3" class="result"><h2>✨Shusuke Fuji✨</h2><img src="images/roulette/fuji.png" alt="不二" class="character-image" /><p>暗黒微笑の王子様とは彼のこと。サボテンに話しかけたりといったお茶目な一面を端正な挙措一点でカバーしている。美しさではカバーしきれないトンチキを発見していきたいところ。技名の愉しさにも刮目せよ。</p>
   <button class="top-button" onclick="goToTop()">もう一度診断する</button>
 </div>
-  <div id="type4" class="result"><h2>✨Seiichi Yukimura✨</h2><p>美しさと恐怖は表裏一体。優しげな顔と鍛え上げられた強い肉体のアンバランスさが絶妙なバランスを保っている。病床から完全復帰した彼は今回一体どんな光景を見せてくれるのか、はたまた見せてくれないのか（五感奪取）。</p>
+  <div id="type4" class="result"><h2>✨Seiichi Yukimura✨</h2><img src="images/rikkai/yukimura.png" alt="不二" class="character-image" /><p>美しさと恐怖は表裏一体。優しげな顔と鍛え上げられた強い肉体のアンバランスさが絶妙なバランスを保っている。病床から完全復帰した彼は今回一体どんな光景を見せてくれるのか、はたまた見せてくれないのか（五感奪取）。</p>
   <button class="top-button" onclick="goToTop()">もう一度診断する</button>
 </div>
 </div>
