@@ -40,3 +40,19 @@ document.addEventListener('DOMContentLoaded', () => {
     videoPlayer.src = '';
   });
 });
+  // 日付表示処理（#date-text に反映）
+  const display = document.getElementById('date-text');
+  const today = new Date();
+  today.setHours(0, 0, 0, 0); // 時刻を00:00に固定
+  const endDate = new Date('2025-07-06');
+  endDate.setHours(0, 0, 0, 0);
+
+  const yyyy = today.getFullYear();
+  const mm = String(today.getMonth() + 1).padStart(2, '0');
+  const dd = String(today.getDate()).padStart(2, '0');
+  const weekdays = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+  const weekday = weekdays[today.getDay()];
+  const formatted = `${yyyy}/${mm}/${dd} (${weekday})`;
+  const remaining = Math.max(0, Math.ceil((endDate - today) / (1000 * 60 * 60 * 24)));
+
+  display.textContent = `${formatted}　🍧 あと${remaining}日`;
