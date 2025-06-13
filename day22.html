@@ -133,11 +133,20 @@
   background-color: #119fd4;
   color: #ffffff;
 }
+.character-image {
+  display: block;
+  max-width: 20%;
+  height: auto;
+  margin: 10px auto 20px; /* 上下に少し余白・中央揃え */
+  border-radius: 8px; /* 任意：角を少し丸くするなら */
+}
   </style>
 </head>
 <body>
   <div class="test-box" id="quiz">
     <h1>俺様に相応しいライバルは誰なのか、教えろォ！</h1>
+<img src="images/hyotei/atobe.png" alt="跡部" class="character-image" />
+
     <div class="question" id="question"></div>
     <div class="options" id="options"></div>
     <div class="result" id="result"></div>
